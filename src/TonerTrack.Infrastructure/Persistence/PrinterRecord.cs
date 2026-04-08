@@ -23,4 +23,5 @@ internal sealed class PrinterRecord
     [JsonPropertyName("drum_units")] public Dictionary<string, string> DrumUnits { get; set; } = [];
     [JsonPropertyName("other")] public Dictionary<string, string> OtherSupplies { get; set; } = [];
     [JsonPropertyName("pages_history")] public Dictionary<string, long> PagesHistory { get; set; } = [];
+    [JsonPropertyName("has_open_ticket")] public bool HasOpenTicket { get; set; }
 }

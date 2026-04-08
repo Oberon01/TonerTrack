@@ -15,6 +15,7 @@ public sealed class Printer
     public string Community { get; private set; } = default!;
     public string Location { get; private set; } = string.Empty;
     public bool UserOverridden { get; private set; }
+    public bool HasOpenTicket { get; private set; }
 
     // SNMP polled data
     public string Model { get; private set; } = "N/A";
@@ -109,8 +110,19 @@ public sealed class Printer
         Status = EvaluateStatus();
 
         // Raise events after state is consistent
-        if (HasLowToner())
-            _domainEvents.Add(new PrinterTonerLowEvent(IpAddress, Name, GetLowTonerSupplies()));
+
+        var currentlyLow = HasLowToner();
+
+        if (currentlyLow && !HasOpenTicket)
+        {
+            _domainEvents.Add(new PrinterTonerLowEvent(IpAddress, Name, Location, GetLowTonerSupplies()));
+            HasOpenTicket = true;
+        }
+
+        if (!currentlyLow && HasOpenTicket)
+        {
+            HasOpenTicket = false;
+        }
 
         if (previousStatus != Status && Status == PrinterStatus.Error)
             _domainEvents.Add(new PrinterStatusChangedEvent(IpAddress, Name, previousStatus, Status));
@@ -172,18 +184,20 @@ public sealed class Printer
         string model, string serialNumber, PrinterStatus status,
         DateTime? lastPolledAt, long? totalPagesPrinted, long? lastTotalPages,
         int offlineAttempts,
+        bool hasOpenTicket,
         IReadOnlyList<Supply> supplies,
         Dictionary<string, long> pagesHistory)
     {
-        Location          = location;
-        UserOverridden    = userOverridden;
-        Model             = model;
-        SerialNumber      = serialNumber;
-        Status            = status;
-        LastPolledAt      = lastPolledAt;
+        Location = location;
+        UserOverridden = userOverridden;
+        Model = model;
+        SerialNumber = serialNumber;
+        Status = status;
+        LastPolledAt = lastPolledAt;
         TotalPagesPrinted = totalPagesPrinted;
-        LastTotalPages    = lastTotalPages;
-        OfflineAttempts   = offlineAttempts;
+        LastTotalPages = lastTotalPages;
+        OfflineAttempts = offlineAttempts;
+        HasOpenTicket = hasOpenTicket;
         _supplies.Clear();
         _supplies.AddRange(supplies);
         _pagesHistory.Clear();
@@ -193,8 +207,8 @@ public sealed class Printer
 
 // DTO carrying raw SNMP poll results into the aggregate
 public sealed record PrinterPollResult(
-    string?                     Model,
-    string?                     SerialNumber,
-    long?                       TotalPages,
-    IReadOnlyList<Supply>       Supplies,
+    string? Model,
+    string? SerialNumber,
+    long? TotalPages,
+    IReadOnlyList<Supply> Supplies,
     IReadOnlyList<PrinterAlert> Alerts);

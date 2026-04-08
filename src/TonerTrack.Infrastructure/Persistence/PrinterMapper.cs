@@ -25,6 +25,7 @@ internal static class PrinterMapper
         DrumUnits = p.DrumUnits.ToDictionary(s => s.Name, s => s.Level.Display),
         OtherSupplies = p.OtherSupplies.ToDictionary(s => s.Name, s => s.Level.Display),
         PagesHistory = new Dictionary<string, long>(p.PagesHistory),
+        HasOpenTicket = p.HasOpenTicket,
     };
 
     /// <summary>Maps a storage record to a domain entity.</summary>
@@ -44,6 +45,7 @@ internal static class PrinterMapper
             totalPagesPrinted: r.TotalPagesPrinted,
             lastTotalPages: r.LastTotalPages,
             offlineAttempts: r.OfflineAttempts,
+            hasOpenTicket: r.HasOpenTicket,
             supplies: BuildSupplies(r),
             pagesHistory: r.PagesHistory);
 

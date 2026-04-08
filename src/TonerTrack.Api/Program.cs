@@ -6,17 +6,16 @@ using TonerTrack.Infrastructure.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ── Configuration ─────────────────────────────────────────────────────────────
+// Configuration sources
 builder.Configuration
-    .AddJsonFile("appsettings.json",                          optional: false, reloadOnChange: true)
-    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json",
-                                                              optional: true,  reloadOnChange: true)
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true,  reloadOnChange: true)
     .AddEnvironmentVariables();
 
-// ── Logging ───────────────────────────────────────────────────────────────────
+// Add logging providers
 builder.Logging.ClearProviders().AddConsole().AddDebug();
 
-// ── Services ──────────────────────────────────────────────────────────────────
+// Adding services to the container
 builder.Services
     .AddApplication()
     .AddInfrastructure(builder.Configuration);
@@ -37,7 +36,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddCors(o =>
     o.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 
-// ── Pipeline ──────────────────────────────────────────────────────────────────
+// Pipelines
 var app = builder.Build();
 
 app.UseMiddleware<GlobalExceptionMiddleware>();
@@ -49,10 +48,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors();
-app.UseStaticFiles();   // serves wwwroot/ — drop your existing HTML/CSS/JS here
+app.UseStaticFiles();   // serves wwwroot/ 
 app.MapControllers();
 
-// ── Startup banner ────────────────────────────────────────────────────────────
+// banner
 var log = app.Services.GetRequiredService<ILogger<Program>>();
 log.LogInformation("========================================");
 log.LogInformation("  TonerTrack .NET 10  |  {Env}", app.Environment.EnvironmentName);

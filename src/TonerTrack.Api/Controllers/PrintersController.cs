@@ -47,7 +47,7 @@ public sealed class PrintersController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> Add(AddPrinterRequest body, CancellationToken ct)
     {
         var dto = await mediator.Send(
-            new AddPrinterCommand(body.Name, body.IpAddress, body.Community ?? "public"), ct);
+            new AddPrinterCommand(body.Name, body.IpAddress, body.Location ?? "", body.Community ?? "public"), ct);
         return CreatedAtAction(nameof(Get), new { ip = dto.IpAddress }, dto);
     }
 
@@ -56,7 +56,7 @@ public sealed class PrintersController(IMediator mediator) : ControllerBase
     [ProducesResponseType(typeof(PrinterDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> Update(
         string ip, UpdatePrinterRequest body, CancellationToken ct) =>
-        Ok(await mediator.Send(new UpdatePrinterCommand(ip, body.Name, body.Community), ct));
+        Ok(await mediator.Send(new UpdatePrinterCommand(ip, body.Name, body.Location, body.Community), ct));
 
     // DELETE /api/printers/{ip}
     [HttpDelete("{ip}")]
@@ -93,6 +93,6 @@ public sealed class PrintersController(IMediator mediator) : ControllerBase
 }
 
 // Request body models
-public sealed record AddPrinterRequest(string Name, string IpAddress, string? Community);
-public sealed record UpdatePrinterRequest(string? Name, string? Community);
+public sealed record AddPrinterRequest(string Name, string IpAddress, string? Location, string? Community);
+public sealed record UpdatePrinterRequest(string? Name, string? Location, string? Community);
 public sealed record ImportPrinterRequestBody(string IpAddress, string Name, string? Community);

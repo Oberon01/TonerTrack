@@ -11,6 +11,7 @@ public interface IDomainEvent
 public sealed record PrinterTonerLowEvent(
     string IpAddress,
     string PrinterName,
+    string Location,
     IReadOnlyList<Supply> LowSupplies) : IDomainEvent
 {
     public DateTime OccurredAt { get; } = DateTime.UtcNow;

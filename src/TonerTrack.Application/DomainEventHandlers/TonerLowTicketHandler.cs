@@ -35,11 +35,12 @@ public sealed class TonerLowTicketHandler(
 
         var subject = $"Low Toner Alert – {evt.PrinterName}";
         var body = $"Printer {evt.PrinterName} ({evt.IpAddress}) has low toner:\n{lowList}";
+        var locationId = int.TryParse(evt.Location, out var locId) ? locId : o.LocationId;
 
         try
         {
             var ticketRef = await logger_ninja.CreateTonerTicketAsync(
-                o.ClientId, o.TicketFormId, o.LocationId, o.NodeId,
+                o.ClientId, o.TicketFormId, o.LocationId,
                 subject, body, ct);
 
             logger.LogInformation(
@@ -49,8 +50,9 @@ public sealed class TonerLowTicketHandler(
         catch (Exception ex)
         {
             logger.LogError(ex,
-                "Failed to create NinjaRMM ticket for {Printer} ({Ip})",
-                evt.PrinterName, evt.IpAddress);
+                "Failed to create NinjaRMM ticket for {Printer} ({Ip}). Response: {Message}",
+                evt.PrinterName, evt.IpAddress, ex.Message);
+            throw;
         }
     }
 }
@@ -68,5 +70,4 @@ public sealed class NinjaRmmTicketOptions
     public int ClientId { get; set; }
     public int TicketFormId { get; set; }
     public int LocationId { get; set; }
-    public int NodeId { get; set; }
 }

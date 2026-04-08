@@ -17,7 +17,7 @@ public interface ISnmpService
 public interface INinjaRmmService
 {
     Task<string> CreateTonerTicketAsync(
-        int clientId, int ticketFormId, int locationId, int nodeId,
+        int clientId, int ticketFormId, int locationId,
         string subject, string body,
         CancellationToken ct = default);
 }

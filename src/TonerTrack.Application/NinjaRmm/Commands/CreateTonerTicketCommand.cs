@@ -8,7 +8,6 @@ public sealed record CreateTonerTicketCommand(
     int ClientId,
     int TicketFormId,
     int LocationId,
-    int NodeId,
     string Subject,
     string Body) : IRequest<string>;   // returns ticket reference / ID
 
@@ -17,7 +16,7 @@ public sealed class CreateTonerTicketHandler(INinjaRmmService ninja)
 {
     public Task<string> Handle(CreateTonerTicketCommand cmd, CancellationToken ct) =>
         ninja.CreateTonerTicketAsync(
-            cmd.ClientId, cmd.TicketFormId, cmd.LocationId, cmd.NodeId,
+            cmd.ClientId, cmd.TicketFormId, cmd.LocationId,
             cmd.Subject, cmd.Body, ct
         );
 }

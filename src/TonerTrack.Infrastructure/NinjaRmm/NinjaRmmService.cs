@@ -9,9 +9,10 @@ namespace TonerTrack.Infrastructure.NinjaRmm;
 
 /// <summary>
 /// NinjaRMM HTTP client.
-/// - OAuth2 client-credentials token acquisition with in-memory caching
-///   (same 30-second expiry buffer as the original Python implementation)
-/// - Thread-safe via SemaphoreSlim during token refresh
+/// - OAuth2 refresh_token flow — requires a refresh token obtained once via
+///   the browser authorization code flow (e.g. via Postman).
+/// - In-memory access token caching with 30-second expiry buffer.
+/// - Thread-safe token refresh via SemaphoreSlim.
 /// </summary>
 public sealed class NinjaRmmService(
     HttpClient http,
@@ -27,7 +28,7 @@ public sealed class NinjaRmmService(
 
     // INinjaRmmService implementation
     public async Task<string> CreateTonerTicketAsync(
-        int clientId, int ticketFormId, int locationId, int nodeId,
+        int clientId, int ticketFormId, int locationId,
         string subject, string body, CancellationToken ct = default)
     {
         var token = await GetAccessTokenAsync(ct);
@@ -37,11 +38,10 @@ public sealed class NinjaRmmService(
             clientId,
             ticketFormId,
             locationId,
-            nodeId,
-            summary = subject,
+            subject,
             description = new
             {
-                @public  = true,
+                @public = true,
                 body,
                 htmlBody = $"<p>{System.Net.WebUtility.HtmlEncode(body).Replace("\n", "<br/>")}</p>",
             },
@@ -51,66 +51,97 @@ public sealed class NinjaRmmService(
             priority = "NONE",
         };
 
+        var payloadJson = JsonSerializer.Serialize(payload);
+        logger.LogDebug("NinjaRMM ticket payload: {Payload}", payloadJson);
+
         using var request = new HttpRequestMessage(HttpMethod.Post, "v2/ticketing/ticket")
         {
-            Content = JsonContent.Create(payload),
+            Content = new StringContent(payloadJson, System.Text.Encoding.UTF8, "application/json"),
         };
         request.Headers.Add("Authorization", $"Bearer {token}");
         request.Headers.Add("Accept", "application/json");
 
         var response = await http.SendAsync(request, ct);
-        response.EnsureSuccessStatusCode();
+        var responseBody = await response.Content.ReadAsStringAsync(ct);
 
-        var json = await response.Content.ReadFromJsonAsync<JsonElement>(cancellationToken: ct);
+        logger.LogDebug("NinjaRMM API response: {StatusCode} - {ResponseBody}",
+            (int)response.StatusCode, responseBody);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            logger.LogError(
+                "Failed to create NinjaRMM ticket. Status: {StatusCode}, Response: {ResponseBody}",
+                (int)response.StatusCode, responseBody);
+            throw new InvalidOperationException(
+                $"NinjaRMM API error: {(int)response.StatusCode} - {responseBody}");
+        }
+
+        var json = JsonSerializer.Deserialize<JsonElement>(responseBody);
         var ticketId = json.TryGetProperty("id", out var id) ? id.ToString() : "unknown";
 
         logger.LogInformation("NinjaRMM ticket created: {TicketId}", ticketId);
         return ticketId;
     }
 
-    // Token Management with in-memory caching and thread safety
-    /// <summary>Gets a valid access token, using a cached token if available.</summary>
+    // Token management with in-memory caching and thread-safe refresh
     private async Task<string> GetAccessTokenAsync(CancellationToken ct)
     {
-        // Fast path — valid cached token
         if (_cachedToken is not null && DateTime.UtcNow < _tokenExpiresAt)
             return _cachedToken;
 
         await _tokenLock.WaitAsync(ct);
         try
         {
-            // Double-check inside the lock
             if (_cachedToken is not null && DateTime.UtcNow < _tokenExpiresAt)
                 return _cachedToken;
 
             var tokenResp = await FetchTokenAsync(ct);
             _cachedToken = tokenResp.AccessToken;
             _tokenExpiresAt = DateTime.UtcNow.AddSeconds(tokenResp.ExpiresIn - 30);
+
+            logger.LogDebug("NinjaRMM access token refreshed, expires in {ExpiresIn}s",
+                tokenResp.ExpiresIn);
+
             return _cachedToken;
         }
         finally { _tokenLock.Release(); }
     }
 
-    /// <summary>Fetches a new access token from NinjaRMM.</summary>
     private async Task<TokenResponse> FetchTokenAsync(CancellationToken ct)
     {
+        if (string.IsNullOrWhiteSpace(_opts.RefreshToken))
+            throw new InvalidOperationException(
+                "NinjaRmm:RefreshToken is not configured. " +
+                "Obtain a refresh token via Postman and store it with: " +
+                "dotnet user-secrets set \"NinjaRmm:RefreshToken\" \"<token>\"");
+
         var form = new Dictionary<string, string>
         {
-            ["grant_type"] = "client_credentials",
-            ["client_id"] = _opts.ClientId,
-            ["client_secret"] = _opts.ClientSecret,
+            ["grant_type"] = "refresh_token",
+            ["refresh_token"] = _opts.RefreshToken,
             ["scope"] = _opts.Scope,
         };
 
-        using var req  = new HttpRequestMessage(HttpMethod.Post, "oauth/token")
+        var credentials = Convert.ToBase64String(
+            System.Text.Encoding.UTF8.GetBytes($"{_opts.ClientId}:{_opts.ClientSecret}"));
+
+        using var req = new HttpRequestMessage(HttpMethod.Post, "oauth/token")
         {
             Content = new FormUrlEncodedContent(form),
         };
+        req.Headers.Add("Authorization", $"Basic {credentials}");
 
         var resp = await http.SendAsync(req, ct);
-        resp.EnsureSuccessStatusCode();
+        var responseBody = await resp.Content.ReadAsStringAsync(ct);
 
-        return await resp.Content.ReadFromJsonAsync<TokenResponse>(cancellationToken: ct)
+        logger.LogDebug("Token response: {StatusCode} - {ResponseBody}",
+            (int)resp.StatusCode, responseBody);
+
+        if (!resp.IsSuccessStatusCode)
+            throw new InvalidOperationException(
+                $"NinjaRMM token refresh failed: {(int)resp.StatusCode} - {responseBody}");
+
+        return JsonSerializer.Deserialize<TokenResponse>(responseBody)
                ?? throw new InvalidOperationException("Empty token response from NinjaRMM.");
     }
 
@@ -119,8 +150,7 @@ public sealed class NinjaRmmService(
         [property: JsonPropertyName("expires_in")] int ExpiresIn);
 }
 
-// @TODO: Consider validating these options (e.g. non-empty ClientId/ClientSecret) using IValidateOptions.
-/// <summary>Configuration options for NinjaRMM API access, bound from appsettings.json.</summary>
+// Options class for configuring NinjaRMM API credentials and defaults.
 public sealed class NinjaRmmOptions
 {
     public const string Section = "NinjaRmm";
@@ -128,5 +158,6 @@ public sealed class NinjaRmmOptions
     public string BaseUrl { get; set; } = "https://app.ninjarmm.com/";
     public string ClientId { get; set; } = "";
     public string ClientSecret { get; set; } = "";
-    public string Scope { get; set; } = "monitoring management control offline_access";
+    public string RefreshToken { get; set; } = "";
+    public string Scope { get; set; } = "monitoring management offline_access";
 }

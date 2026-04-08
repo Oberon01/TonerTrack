@@ -17,7 +17,7 @@ public sealed class NinjaRmmController(IMediator mediator) : ControllerBase
         CreateTicketRequest body, CancellationToken ct)
     {
         var ticketId = await mediator.Send(new CreateTonerTicketCommand(
-            body.ClientId, body.TicketFormId, body.LocationId, body.NodeId,
+            body.ClientId, body.TicketFormId, body.LocationId,
             body.Subject, body.Body), ct);
 
         return StatusCode(StatusCodes.Status201Created,
@@ -29,7 +29,6 @@ public sealed record CreateTicketRequest(
     int ClientId,
     int TicketFormId,
     int LocationId,
-    int NodeId,
     string Subject,
     string Body);
 
