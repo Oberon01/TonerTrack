@@ -30,3 +30,19 @@ public interface IDomainEventDispatcher
 {
     Task DispatchAsync(IEnumerable<IDomainEvent> events, CancellationToken ct = default);
 }
+
+/// <summary> Represents a single printer found by a discovery source. </summary>
+public sealed record DiscoveredPrinter(
+    string IpAddress,
+    string Name,
+    string Location,
+    string Community,
+    string Source
+);
+
+public interface IPrinterDiscoveryService
+{
+    string SourceName { get; }
+    bool IsEnabled { get; }
+    Task<IReadOnlyList<DiscoveredPrinter>> DiscoverAsync(CancellationToken ct = default);
+}

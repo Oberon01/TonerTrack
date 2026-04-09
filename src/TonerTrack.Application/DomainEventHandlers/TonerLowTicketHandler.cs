@@ -33,7 +33,7 @@ public sealed class TonerLowTicketHandler(
         var lowList = string.Join("\n",
             evt.LowSupplies.Select(s => $"  • {s.Name}: {s.Level.Display}"));
 
-        var subject = $"Low Toner Alert – {evt.PrinterName}";
+        var subject = $"Low Toner Alert – ({evt.Location}){evt.PrinterName}";
         var body = $"Printer {evt.PrinterName} ({evt.IpAddress}) has low toner:\n{lowList}";
         var locationId = int.TryParse(evt.Location, out var locId) ? locId : o.LocationId;
 

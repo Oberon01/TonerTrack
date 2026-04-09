@@ -8,6 +8,7 @@ using TonerTrack.Infrastructure.BackgroundServices;
 using TonerTrack.Infrastructure.NinjaRmm;
 using TonerTrack.Infrastructure.Persistence;
 using TonerTrack.Infrastructure.Snmp;
+using TonerTrack.Infrastructure.Discovery;
 
 namespace TonerTrack.Infrastructure.DependencyInjection;
 
@@ -25,6 +26,14 @@ public static class InfrastructureServiceExtensions
 
         // SNMP
         services.AddSingleton<ISnmpService, SharpSnmpService>();
+
+        // Discovery
+        services.Configure<DiscoveryOptions>(
+            configuration.GetSection(DiscoveryOptions.Section));
+
+        // Network scan and print server discovery services are registered as singletons
+        services.AddSingleton<IPrinterDiscoveryService, NetworkScanDiscoveryService>();
+        services.AddSingleton<IPrinterDiscoveryService, PrintServerDiscoveryService>();
 
         // NinjaRMM
         services.Configure<NinjaRmmOptions>(

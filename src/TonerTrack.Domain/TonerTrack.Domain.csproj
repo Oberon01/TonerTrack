@@ -12,8 +12,11 @@
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
       <_Parameter1>TonerTrack.Domain.Tests</_Parameter1>
     </AssemblyAttribute>
-	  <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+	<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
       <_Parameter1>TonerTrack.Application.Tests</_Parameter1>
     </AssemblyAttribute>
+	<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+		<_Parameter1>TonerTrack.Application.Tests</_Parameter1>
+	</AssemblyAttribute>
   </ItemGroup>
 </Project>

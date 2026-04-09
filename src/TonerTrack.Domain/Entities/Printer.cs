@@ -87,6 +87,8 @@ public sealed class Printer
     public void SetLocation(string location) =>
         Location = location ?? string.Empty;
 
+    public void ClearUserOverride() => UserOverridden = false;
+
     // Apply the result of a successful SNMP poll.
     // Computes new status, updates page history, and raises domain events.
     public void ApplyPollResult(PrinterPollResult result)
