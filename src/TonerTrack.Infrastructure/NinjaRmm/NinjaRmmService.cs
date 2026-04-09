@@ -52,7 +52,6 @@ public sealed class NinjaRmmService(
         };
 
         var payloadJson = JsonSerializer.Serialize(payload);
-        logger.LogDebug("NinjaRMM ticket payload: {Payload}", payloadJson);
 
         using var request = new HttpRequestMessage(HttpMethod.Post, "v2/ticketing/ticket")
         {

@@ -52,7 +52,6 @@ public sealed class TonerLowTicketHandler(
             logger.LogError(ex,
                 "Failed to create NinjaRMM ticket for {Printer} ({Ip}). Response: {Message}",
                 evt.PrinterName, evt.IpAddress, ex.Message);
-            throw;
         }
     }
 }
