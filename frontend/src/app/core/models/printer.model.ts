@@ -74,3 +74,14 @@ export interface UpdatePrinterRequest {
   community?: string;
   location?: string;
 }
+
+export const LOCATION_NAMES: Record<string, string> = {
+  '1': 'Coppell',
+  '3': 'Alliance',
+  '4': 'North Freeport',
+};
+
+export function locationName(id: string | null | undefined): string {
+  if (!id) return '-';
+  return LOCATION_NAMES[id] ?? id;
+}

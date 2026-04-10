@@ -49,9 +49,13 @@ import { PrinterService } from '../../../core/services/printer.service';
           </div>
 
           <div>
-            <label class="label">Location ID</label>
-            <input formControlName="location" type="text" class="input"
-              placeholder="e.g. 1" />
+            <label class="label">Location</label>
+            <select formControlName="location" class="input">
+              <option value="">-- Select Location --</option>
+              <option value="1">Coppell</option>
+              <option value="3">Alliance</option>
+              <option value="4">North Freeport</option>
+            </select>
             <p class="text-xs text-gray-400 mt-1">NinjaRMM location ID for ticket routing</p>
           </div>
 

@@ -2,7 +2,7 @@ import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PrinterService } from '../../core/services/printer.service';
-import { Printer, PrinterStats } from '../../core/models/printer.model';
+import { Printer, PrinterStats, locationName } from '../../core/models/printer.model';
 import { StatusBadgeComponent } from '../../shared/components/status-badge/status-badge.component';
 import { TonerBarComponent } from '../../shared/components/toner-bar/toner-bar.component';
 
@@ -105,7 +105,7 @@ import { TonerBarComponent } from '../../shared/components/toner-bar/toner-bar.c
 
             <!-- Footer -->
             <div class="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between">
-              <span class="text-xs text-gray-400">{{ printer.location || '—' }}</span>
+              <span class="text-xs text-gray-400">{{ locationName(printer.location) }}</span>
               <span class="text-xs text-gray-400">
                 {{ printer.last_polled_at ? timeAgo(printer.last_polled_at) : 'Never polled' }}
               </span>
@@ -131,11 +131,12 @@ import { TonerBarComponent } from '../../shared/components/toner-bar/toner-bar.c
 export class DashboardComponent implements OnInit {
   private readonly svc = inject(PrinterService);
 
-  printers  = signal<Printer[]>([]);
-  stats     = signal<PrinterStats | null>(null);
-  polling   = signal(false);
+  printers = signal<Printer[]>([]);
+  stats = signal<PrinterStats | null>(null);
+  polling = signal(false);
   activeFilter = signal<string>('all');
-  search    = signal('');
+  search = signal('');
+  locationName = locationName;
 
   filters = [
     { label: 'All',     value: 'all' },

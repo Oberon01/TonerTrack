@@ -2,7 +2,7 @@ import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { PrinterService } from '../../../core/services/printer.service';
-import { Printer } from '../../../core/models/printer.model';
+import { Printer, locationName } from '../../../core/models/printer.model';
 import { StatusBadgeComponent } from '../../../shared/components/status-badge/status-badge.component';
 
 @Component({
@@ -66,7 +66,7 @@ import { StatusBadgeComponent } from '../../../shared/components/status-badge/st
                 <td class="px-4 py-3">
                   <app-status-badge [status]="printer.status" />
                 </td>
-                <td class="px-4 py-3 text-gray-500">{{ printer.location || '—' }}</td>
+                <td class="px-4 py-3 text-gray-500">{{ locationName(printer.location) }}</td>
                 <td class="px-4 py-3 text-gray-500 truncate max-w-40">{{ printer.model }}</td>
                 <td class="px-4 py-3 text-gray-400 text-xs">
                   {{ printer.last_polled_at ? (printer.last_polled_at | date:'short') : 'Never' }}
@@ -104,9 +104,10 @@ export class PrinterListComponent implements OnInit {
   private readonly svc = inject(PrinterService);
   private readonly router = inject(Router);
 
-  printers     = signal<Printer[]>([]);
-  search       = signal('');
+  printers = signal<Printer[]>([]);
+  search = signal('');
   statusFilter = signal('');
+  locationName = locationName;
 
   filtered() {
     return this.printers().filter(p => {
