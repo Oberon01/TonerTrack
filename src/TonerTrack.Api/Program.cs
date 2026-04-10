@@ -1,7 +1,9 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using MediatR;
 using TonerTrack.Api.Extensions;
 using TonerTrack.Api.Middleware;
+using TonerTrack.Application.Discovery;
 using TonerTrack.Infrastructure.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -56,6 +58,9 @@ var log = app.Services.GetRequiredService<ILogger<Program>>();
 log.LogInformation("========================================");
 log.LogInformation("  TonerTrack .NET 10  |  {Env}", app.Environment.EnvironmentName);
 log.LogInformation("========================================");
+
+var handler = app.Services.GetService<IRequestHandler<DiscoverPrintersCommand, DiscoveryResult>>();
+log.LogInformation("Discovery handler registered: {Found}", handler is not null);
 
 app.Run();
 
