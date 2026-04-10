@@ -46,3 +46,10 @@ public interface IPrinterDiscoveryService
     bool IsEnabled { get; }
     Task<IReadOnlyList<DiscoveredPrinter>> DiscoverAsync(CancellationToken ct = default);
 }
+
+public interface IPrinterEnrichmentService
+{
+    Task<PrinterEnrichmentResult?> EnrichAsync(string ipAddress, CancellationToken ct = default);
+}
+
+public sealed record PrinterEnrichmentResult(string Name, string Location);

@@ -17,9 +17,10 @@ public sealed class PollPrinterCommandTests
     private readonly Mock<IPrinterRepository> _repo = new();
     private readonly Mock<ISnmpService> _snmp = new();
     private readonly Mock<IDomainEventDispatcher> _dispatcher = new();
+    private readonly Mock<IPrinterEnrichmentService> _enrichment = new();
 
     private PollPrinterHandler Handler() =>
-        new(_repo.Object, _snmp.Object, _dispatcher.Object);
+        new(_repo.Object, _snmp.Object, _dispatcher.Object, _enrichment.Object);
 
     // ── Happy path ────────────────────────────────────────────────────────────
 

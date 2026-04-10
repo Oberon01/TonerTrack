@@ -68,7 +68,8 @@ public sealed record PollPrinterCommand(string IpAddress) : IRequest<PrinterDto>
 public sealed class PollPrinterHandler(
     IPrinterRepository repo,
     ISnmpService snmp,
-    IDomainEventDispatcher dispatcher)
+    IDomainEventDispatcher dispatcher,
+    IPrinterEnrichmentService enrichment)
     : IRequestHandler<PollPrinterCommand, PrinterDto>
 {
     public async Task<PrinterDto> Handle(PollPrinterCommand cmd, CancellationToken ct)
@@ -76,12 +77,28 @@ public sealed class PollPrinterHandler(
         var printer = await repo.GetByIpAsync(cmd.IpAddress, ct)
                       ?? throw new PrinterNotFoundException(cmd.IpAddress);
 
+        // SNMP poll
         var result = await snmp.PollPrinterAsync(printer.IpAddress, printer.Community, ct);
 
         if (result is null) 
             printer.RecordSnmpUnreachable();
         else 
             printer.ApplyPollResult(result);
+
+        // Enrichment
+        var enriched = await enrichment.EnrichAsync(printer.IpAddress, ct);
+        if (enriched is not null)
+        {
+            if (!printer.Name.Equals(enriched.Name, StringComparison.OrdinalIgnoreCase))
+            {
+                printer.Rename(enriched.Name);
+                printer.ClearUserOverride();
+            }
+            if (!string.IsNullOrWhiteSpace(enriched.Location))
+                printer.SetLocation(enriched.Location);
+        }
+
+        printer.RefreshEventNames();
 
         await repo.UpdateAsync(printer, ct);
         await dispatcher.DispatchAsync(printer.DomainEvents, ct);

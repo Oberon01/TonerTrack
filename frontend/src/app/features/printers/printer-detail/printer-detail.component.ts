@@ -93,6 +93,13 @@ import { TonerBarComponent } from '../../../shared/components/toner-bar/toner-ba
                 <span *ngIf="!printer()!.has_open_ticket" class="text-gray-400 text-xs">No</span>
               </dd>
             </div>
+            <div class="flex justify-between">
+              <dt class="text-gray-500">
+                <a href="http://{{ printer()!.ip_address }}" target="_blank" class="text-blue-600 hover:underline">
+                  Access Printer Via Web Interface
+                </a>
+              </dt>
+            </div>
           </dl>
         </div>
 
@@ -168,7 +175,7 @@ import { TonerBarComponent } from '../../../shared/components/toner-bar/toner-ba
   `,
 })
 export class PrinterDetailComponent implements OnInit {
-  private readonly svc   = inject(PrinterService);
+  private readonly svc = inject(PrinterService);
   private readonly route = inject(ActivatedRoute);
 
   printer = signal<Printer | null>(null);

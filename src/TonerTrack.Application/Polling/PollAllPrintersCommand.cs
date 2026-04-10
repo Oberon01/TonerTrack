@@ -13,6 +13,7 @@ public sealed class PollAllPrintersHandler(
     IPrinterRepository repo,
     ISnmpService snmp,
     IDomainEventDispatcher dispatcher,
+    IPrinterEnrichmentService enrichment,
     ILogger<PollAllPrintersHandler> logger)
     : IRequestHandler<PollAllPrintersCommand, PollAllResult>
 {
@@ -44,6 +45,21 @@ public sealed class PollAllPrintersHandler(
                     logger.LogInformation("Polled {Ip} ({Name}) → {Status}",
                         printer.IpAddress, printer.Name, printer.Status);
                 }
+
+                // Enrich from print server
+                var enriched = await enrichment.EnrichAsync(printer.IpAddress, ct);
+                if (enriched is not null)
+                {
+                    if (!printer.Name.Equals(enriched.Name, StringComparison.OrdinalIgnoreCase))
+                    {
+                        printer.Rename(enriched.Name);
+                        printer.ClearUserOverride();
+                    }
+                    if (!string.IsNullOrWhiteSpace(enriched.Location))
+                        printer.SetLocation(enriched.Location);
+                }
+
+                printer.RefreshEventNames();
 
                 await repo.UpdateAsync(printer, ct);
                 await dispatcher.DispatchAsync(printer.DomainEvents, ct);

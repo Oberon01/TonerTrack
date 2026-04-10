@@ -205,6 +205,19 @@ public sealed class Printer
         _pagesHistory.Clear();
         foreach (var kv in pagesHistory) _pagesHistory[kv.Key] = kv.Value;
     }
+
+    public void RefreshEventNames()
+    {
+        for (var i = 0; i < _domainEvents.Count; i++)
+        {
+            _domainEvents[i] = _domainEvents[i] switch
+            {
+                PrinterTonerLowEvent e => e with { PrinterName = Name },
+                PrinterStatusChangedEvent e => e with { PrinterName = Name },
+                _ => _domainEvents[i]
+            };
+        }
+    }
 }
 
 // DTO carrying raw SNMP poll results into the aggregate

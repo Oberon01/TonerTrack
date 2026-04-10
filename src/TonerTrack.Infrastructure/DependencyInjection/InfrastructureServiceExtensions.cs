@@ -31,6 +31,8 @@ public static class InfrastructureServiceExtensions
         services.Configure<DiscoveryOptions>(
             configuration.GetSection(DiscoveryOptions.Section));
 
+        services.AddSingleton<IPrinterEnrichmentService, PrintServerEnrichmentService>();
+
         // Network scan and print server discovery services are registered as singletons
         services.AddSingleton<IPrinterDiscoveryService, NetworkScanDiscoveryService>();
         services.AddSingleton<IPrinterDiscoveryService, PrintServerDiscoveryService>();

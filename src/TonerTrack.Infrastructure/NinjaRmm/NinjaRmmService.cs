@@ -133,9 +133,6 @@ public sealed class NinjaRmmService(
         var resp = await http.SendAsync(req, ct);
         var responseBody = await resp.Content.ReadAsStringAsync(ct);
 
-        logger.LogDebug("Token response: {StatusCode} - {ResponseBody}",
-            (int)resp.StatusCode, responseBody);
-
         if (!resp.IsSuccessStatusCode)
             throw new InvalidOperationException(
                 $"NinjaRMM token refresh failed: {(int)resp.StatusCode} - {responseBody}");
