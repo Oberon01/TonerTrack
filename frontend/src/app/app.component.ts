@@ -71,7 +71,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 
         <!-- Footer -->
         <div class="px-4 py-3 border-t border-gray-700">
-          <p class="text-gray-500 text-xs">TonerTrack .NET 10</p>
+          <p class="text-gray-500 text-xs">TonerTrack</p>
         </div>
 
       </aside>

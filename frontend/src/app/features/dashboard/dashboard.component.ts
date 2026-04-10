@@ -72,7 +72,7 @@ import { TonerBarComponent } from '../../shared/components/toner-bar/toner-bar.c
         <input
           type="text"
           placeholder="Search printers..."
-          class="ml-auto input w-1/5 min-w-42"
+          class="ml-auto input w-1/5 min-w-40"
           (input)="search.set($any($event.target).value)" />
       </div>
 
