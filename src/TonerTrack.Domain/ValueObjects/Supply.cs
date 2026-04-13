@@ -12,6 +12,7 @@ public sealed record Supply(string Name, SupplyLevel Level, SupplyCategory Categ
     {
         var lower = name.ToLowerInvariant();
         if (lower.Contains("toner")) return SupplyCategory.TonerCartridge;
+        if (lower.Contains("cartridge")) return SupplyCategory.TonerCartridge;
         if (lower.Contains("drum"))  return SupplyCategory.DrumUnit;
         return SupplyCategory.Other;
     }

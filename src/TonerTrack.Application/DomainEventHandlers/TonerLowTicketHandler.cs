@@ -32,12 +32,12 @@ public sealed class TonerLowTicketHandler(
 
         var lowList = string.Join("\n",
             evt.LowSupplies.Select(s => $"  • {s.Name}: {s.Level.Display}"));
-        
+
         var locationDisplay = GetLocationName(evt.Location);
-        var prefix = string.IsNullOrEmpty(locationDisplay) ? "" : $"[{locationDisplay}] ";
+        var prefix = string.IsNullOrEmpty(locationDisplay) ? "" : $"[{locationDisplay}]";
 
         var subject = $"Low Toner Alert – ({prefix}) {evt.PrinterName}";
-        var body = $"Printer {evt.PrinterName} ({evt.IpAddress}) has low toner:\n{lowList}";
+        var body = $"{evt.PrinterName} ({evt.IpAddress}) has low toner:\n{lowList}";
         var locationId = int.TryParse(evt.Location, out var locId) ? locId : o.LocationId;
 
         try
@@ -57,19 +57,19 @@ public sealed class TonerLowTicketHandler(
                 evt.PrinterName, evt.IpAddress, ex.Message);
         }
     }
-}
 
-private static readonly Dictionary<string, string> LocationNames = new()
+    private static readonly Dictionary<string, string> LocationNames = new()
 {
     { "1", "Coppell" },
     { "3", "Alliance" },
     { "4", "North Freeport" }
 };
 
-private static string GetLocationName(string? locationId)
-{
-    if (string.IsNullOrEmpty(locationId)) return "";
-    return LocationNames.TryGetValue(locationId, out var name) ? name : locationId;
+    private static string GetLocationName(string? locationId)
+    {
+        if (string.IsNullOrEmpty(locationId)) return "";
+        return LocationNames.TryGetValue(locationId, out var name) ? name : locationId;
+    }
 }
 
 // Options class for configuring ticket defaults when auto-creating tickets from domain events.
