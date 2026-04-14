@@ -1,12 +1,12 @@
 <Solution>
-  <Folder Name="/src/">
-    <Project Path="src/TonerTrack.Domain/TonerTrack.Domain.csproj" />
-    <Project Path="src/TonerTrack.Application/TonerTrack.Application.csproj" />
-    <Project Path="src/TonerTrack.Infrastructure/TonerTrack.Infrastructure.csproj" />
-    <Project Path="src/TonerTrack.Api/TonerTrack.Api.csproj" />
+  <Folder Name="/backend/src/">
+    <Project Path="backend/src/TonerTrack.Domain/TonerTrack.Domain.csproj" />
+    <Project Path="backend/src/TonerTrack.Application/TonerTrack.Application.csproj" />
+    <Project Path="backend/src/TonerTrack.Infrastructure/TonerTrack.Infrastructure.csproj" />
+    <Project Path="backend/src/TonerTrack.Api/TonerTrack.Api.csproj" />
   </Folder>
-  <Folder Name="/tests/">
-    <Project Path="tests/TonerTrack.Domain.Tests/TonerTrack.Domain.Tests.csproj" />
-    <Project Path="tests/TonerTrack.Application.Tests/TonerTrack.Application.Tests.csproj" />
+  <Folder Name="/backend/tests/">
+    <Project Path="backend/tests/TonerTrack.Domain.Tests/TonerTrack.Domain.Tests.csproj" />
+    <Project Path="backend/tests/TonerTrack.Application.Tests/TonerTrack.Application.Tests.csproj" />
   </Folder>
 </Solution>

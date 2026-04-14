@@ -50,11 +50,11 @@ public sealed record SupplyLevel
         };
     }
 
-    // True when toner is below 20% - drives Warning status.
-    public bool IsLow => Percentage is not null && Percentage < 20;
+    // True when toner is below 10% - drives Warning status.
+    public bool IsLow => Percentage is not null && Percentage < 10;
 
-    // True when toner is below 10% - drives Error status.
-    public bool IsCritical => Percentage is not null && Percentage < 10;
+    // True when toner is below 5% - drives Error status.
+    public bool IsCritical => Percentage is not null && Percentage < 5;
 
     public override string ToString() => Display;
 }

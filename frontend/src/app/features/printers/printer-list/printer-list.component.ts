@@ -48,13 +48,76 @@ import { StatusBadgeComponent } from '../../../shared/components/status-badge/st
         <table class="w-full text-sm">
           <thead class="bg-gray-50 border-b border-gray-200">
             <tr>
-              <th class="px-4 py-3 text-left font-medium text-gray-600">Name</th>
-              <th class="px-4 py-3 text-left font-medium text-gray-600">IP Address</th>
-              <th class="px-4 py-3 text-left font-medium text-gray-600">Status</th>
-              <th class="px-4 py-3 text-left font-medium text-gray-600">Location</th>
-              <th class="px-4 py-3 text-left font-medium text-gray-600">Model</th>
-              <th class="px-4 py-3 text-left font-medium text-gray-600">Last Polled</th>
-              <th class="px-4 py-3 text-left font-medium text-gray-600">Ticket</th>
+              <th class="px-4 py-3 text-left font-medium text-gray-600 cursor-pointer" (click)="toggleSort('name')">Name
+                <span class="ml-2 inline-flex items-center text-gray-400">
+                  <svg *ngIf="sortBy() === 'name' && sortDir() === 'asc'" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                  </svg>
+                  <svg *ngIf="sortBy() === 'name' && sortDir() === 'desc'" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </th>
+              <th class="px-4 py-3 text-left font-medium text-gray-600 cursor-pointer" (click)="toggleSort('ip_address')">IP Address
+                <span class="ml-2 inline-flex items-center text-gray-400">
+                  <svg *ngIf="sortBy() === 'ip_address' && sortDir() === 'asc'" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                  </svg>
+                  <svg *ngIf="sortBy() === 'ip_address' && sortDir() === 'desc'" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </th>
+              <th class="px-4 py-3 text-left font-medium text-gray-600 cursor-pointer" (click)="toggleSort('status')">Status
+                <span class="ml-2 inline-flex items-center text-gray-400">
+                  <svg *ngIf="sortBy() === 'status' && sortDir() === 'asc'" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                  </svg>
+                  <svg *ngIf="sortBy() === 'status' && sortDir() === 'desc'" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </th>
+              <th class="px-4 py-3 text-left font-medium text-gray-600 cursor-pointer" (click)="toggleSort('location')">Location
+                <span class="ml-2 inline-flex items-center text-gray-400">
+                  <svg *ngIf="sortBy() === 'location' && sortDir() === 'asc'" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                  </svg>
+                  <svg *ngIf="sortBy() === 'location' && sortDir() === 'desc'" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </th>
+              <th class="px-4 py-3 text-left font-medium text-gray-600 cursor-pointer" (click)="toggleSort('model')">Model
+                <span class="ml-2 inline-flex items-center text-gray-400">
+                  <svg *ngIf="sortBy() === 'model' && sortDir() === 'asc'" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                  </svg>
+                  <svg *ngIf="sortBy() === 'model' && sortDir() === 'desc'" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </th>
+              <th class="px-4 py-3 text-left font-medium text-gray-600 cursor-pointer" (click)="toggleSort('last_polled_at')">Last Polled
+                <span class="ml-2 inline-flex items-center text-gray-400">
+                  <svg *ngIf="sortBy() === 'last_polled_at' && sortDir() === 'asc'" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                  </svg>
+                  <svg *ngIf="sortBy() === 'last_polled_at' && sortDir() === 'desc'" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </th>
+              <th class="px-4 py-3 text-left font-medium text-gray-600 cursor-pointer" (click)="toggleSort('has_open_ticket')">Ticket
+                <span class="ml-2 inline-flex items-center text-gray-400">
+                  <svg *ngIf="sortBy() === 'has_open_ticket' && sortDir() === 'asc'" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                  </svg>
+                  <svg *ngIf="sortBy() === 'has_open_ticket' && sortDir() === 'desc'" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </th>
               <th class="px-4 py-3"></th>
             </tr>
           </thead>
@@ -108,10 +171,12 @@ export class PrinterListComponent implements OnInit {
   search = signal('');
   statusFilter = signal('');
   locationName = locationName;
+  sortBy = signal<'ip_address' | 'name' | 'status' | 'location' | 'model' | 'last_polled_at' | 'has_open_ticket'>('ip_address');
+  sortDir = signal<'asc' | 'desc'>('asc');
 
   filtered() {
-    return this.printers().filter(p => {
-      const q = this.search().toLowerCase();
+    const q = this.search().toLowerCase();
+    const filtered = this.printers().filter(p => {
       const matchesSearch = !q ||
         p.name.toLowerCase().includes(q) ||
         p.ip_address.includes(q) ||
@@ -120,10 +185,45 @@ export class PrinterListComponent implements OnInit {
       const matchesStatus = !this.statusFilter() || p.status === this.statusFilter();
       return matchesSearch && matchesStatus;
     });
+
+    const field = this.sortBy();
+    const dir = this.sortDir() === 'asc' ? 1 : -1;
+
+    return filtered.sort((a, b) => {
+      if (field === 'ip_address') {
+        return dir * (this.ipToNumber(a.ip_address) - this.ipToNumber(b.ip_address));
+      }
+      if (field === 'last_polled_at') {
+        const ta = a.last_polled_at ? new Date(a.last_polled_at).getTime() : 0;
+        const tb = b.last_polled_at ? new Date(b.last_polled_at).getTime() : 0;
+        return dir * (ta - tb);
+      }
+      if (field === 'has_open_ticket') {
+        return dir * ((a.has_open_ticket ? 1 : 0) - (b.has_open_ticket ? 1 : 0));
+      }
+      const va = ((a as any)[field] ?? '').toString().toLowerCase();
+      const vb = ((b as any)[field] ?? '').toString().toLowerCase();
+      if (va < vb) return -1 * dir;
+      if (va > vb) return 1 * dir;
+      return 0;
+    });
+  }
+
+  private ipToNumber(ip: string) {
+    return ip.split('.').reduce((acc, oct) => (acc << 8) + (Number(oct) || 0), 0) >>> 0;
   }
 
   goTo(ip: string) {
     this.router.navigate(['/printers', ip]);
+  }
+
+  toggleSort(field: 'ip_address' | 'name' | 'status' | 'location' | 'model' | 'last_polled_at' | 'has_open_ticket') {
+    if (this.sortBy() === field) {
+      this.sortDir.set(this.sortDir() === 'asc' ? 'desc' : 'asc');
+    } else {
+      this.sortBy.set(field as any);
+      this.sortDir.set('asc');
+    }
   }
 
   ngOnInit() {

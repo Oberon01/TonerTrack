@@ -1,4 +1,4 @@
-namespace TonerTrack.Domain.ValueObjects;
+ namespace TonerTrack.Domain.ValueObjects;
 
 public enum SupplyCategory { 
     TonerCartridge, 
