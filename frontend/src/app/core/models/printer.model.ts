@@ -1,5 +1,7 @@
 export type PrinterStatus = 'Unknown' | 'Ok' | 'Warning' | 'Error' | 'Offline';
 
+export type PrinterBrand = 'HP' | 'Canon' | 'Printronix' | 'SATO' | 'Zebra' |'Other';
+
 export interface Printer {
   ip_address: string;
   name: string;
@@ -45,6 +47,23 @@ export interface MonthlyUsage {
   month: string;
   pages: number;
 }
+
+export function detectBrand(model:string | null | undefined): PrinterBrand {
+  if (!model) return 'Other';
+  const m = model.toLowerCase();
+  if (m.includes('hp') || m.includes('hewlett')) return 'HP';
+  if (m.includes('canon')) return 'Canon';
+  if (m.includes('sato')) return 'SATO';
+  if (m.includes('zebra')) return 'Zebra';
+  
+  // Printronix models typically start with T (e.g. T4000, T6000, T8000)
+  // or contain "printronix" in the string
+  if (m.includes('printronix') || /\bT\d{4}/i.test(model)) return 'Printronix';
+
+  return 'Other';
+}
+
+export const BRANDS: PrinterBrand[] = ['HP', 'Canon', 'Printronix', 'SATO', 'Zebra', 'Other'];
 
 export interface DiscoveryResult {
   added: number;

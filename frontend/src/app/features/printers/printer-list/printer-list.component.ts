@@ -2,7 +2,7 @@ import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { PrinterService } from '../../../core/services/printer.service';
-import { Printer, locationName } from '../../../core/models/printer.model';
+import { Printer, locationName, detectBrand, BRANDS, PrinterBrand } from '../../../core/models/printer.model';
 import { StatusBadgeComponent } from '../../../shared/components/status-badge/status-badge.component';
 
 @Component({
@@ -40,6 +40,14 @@ import { StatusBadgeComponent } from '../../../shared/components/status-badge/st
           <option value="Error">Error</option>
           <option value="Offline">Offline</option>
           <option value="Unknown">Unknown</option>
+        </select>
+        <select class="input w-40" (change)="brandFilter.set($any($event.target).value)">
+          <option value="">All brands</option>
+          <option value="HP">HP</option>
+          <option value="Canon">Canon</option>
+          <option value="Printronix">Printronix</option>
+          <option value="SATO">SATO</option>
+          <option value="Other">Other</option>
         </select>
       </div>
 
@@ -173,6 +181,8 @@ export class PrinterListComponent implements OnInit {
   locationName = locationName;
   sortBy = signal<'ip_address' | 'name' | 'status' | 'location' | 'model' | 'last_polled_at' | 'has_open_ticket'>('ip_address');
   sortDir = signal<'asc' | 'desc'>('asc');
+  brandFilter = signal<string>('');
+  detectBrand = detectBrand
 
   filtered() {
     const q = this.search().toLowerCase();
@@ -183,7 +193,8 @@ export class PrinterListComponent implements OnInit {
         p.location.toLowerCase().includes(q) ||
         p.model.toLowerCase().includes(q);
       const matchesStatus = !this.statusFilter() || p.status === this.statusFilter();
-      return matchesSearch && matchesStatus;
+      const matchesBrand = !this.brandFilter() || detectBrand(p.model) === this.brandFilter();
+      return matchesSearch && matchesStatus && matchesBrand;
     });
 
     const field = this.sortBy();

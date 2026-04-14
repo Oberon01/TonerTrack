@@ -2,7 +2,7 @@ import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PrinterService } from '../../core/services/printer.service';
-import { Printer, PrinterStats, locationName } from '../../core/models/printer.model';
+import { Printer, PrinterStats, locationName, detectBrand, BRANDS } from '../../core/models/printer.model';
 import { StatusBadgeComponent } from '../../shared/components/status-badge/status-badge.component';
 import { TonerBarComponent } from '../../shared/components/toner-bar/toner-bar.component';
 
@@ -76,6 +76,29 @@ import { TonerBarComponent } from '../../shared/components/toner-bar/toner-bar.c
           (input)="search.set($any($event.target).value)" />
       </div>
 
+      <!-- Brand filter -->
+      <div class="flex flex-wrap gap-2 items-center">
+        <span class="text-sm font-medium text-gray-600">Brand:</span>
+        <button
+          class="px-3 py-1 rounded-full text-xs font-medium border transition-colors"
+          [class]="activeBrandFilter() === 'all'
+            ? 'bg-blue-600 text-white border-blue-600'
+            : 'bg-white text-gray-600 border-gray-300 hover:bg-gray-50'"
+          (click)="activeBrandFilter.set('all')">
+          All
+        </button>
+        @for (brand of brands; track brand) {
+          <button
+            class="px-3 py-1 rounded-full text-xs font-medium border transition-colors"
+            [class]="activeBrandFilter() === brand
+              ? 'bg-blue-600 text-white border-blue-600'
+              : 'bg-white text-gray-600 border-gray-300 hover:bg-gray-50'"
+            (click)="activeBrandFilter.set(brand)">
+            {{ brand }}
+          </button>
+        }
+      </div>
+
       <!-- Printer grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         @for (printer of filteredPrinters(); track printer.ip_address) {
@@ -137,6 +160,9 @@ export class DashboardComponent implements OnInit {
   activeFilter = signal<string>('all');
   search = signal('');
   locationName = locationName;
+  activeBrandFilter = signal<string>('all');
+  detectBrand = detectBrand;
+  brands = BRANDS;
 
   filters = [
     { label: 'All',     value: 'all' },
@@ -149,12 +175,13 @@ export class DashboardComponent implements OnInit {
   filteredPrinters() {
     return this.printers().filter(p => {
       const matchesFilter = this.activeFilter() === 'all' || p.status === this.activeFilter();
+      const matchesBrand = this.activeBrandFilter() === 'all' || this.detectBrand(p.model) === this.activeBrandFilter();
       const q = this.search().toLowerCase();
       const matchesSearch = !q ||
         p.name.toLowerCase().includes(q) ||
         p.ip_address.includes(q) ||
         p.location.toLowerCase().includes(q);
-      return matchesFilter && matchesSearch;
+      return matchesFilter && matchesBrand && matchesSearch;
     });
   }
 
