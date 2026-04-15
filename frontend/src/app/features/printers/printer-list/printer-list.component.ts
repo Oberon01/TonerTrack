@@ -2,8 +2,9 @@ import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { PrinterService } from '../../../core/services/printer.service';
-import { Printer, locationName, detectBrand, BRANDS, PrinterBrand } from '../../../core/models/printer.model';
+import { Printer, detectBrand, BRANDS, PrinterBrand } from '../../../core/models/printer.model';
 import { StatusBadgeComponent } from '../../../shared/components/status-badge/status-badge.component';
+import { LocationService } from '../../../core/services/location.service';
 
 @Component({
   selector: 'app-printer-list',
@@ -137,7 +138,7 @@ import { StatusBadgeComponent } from '../../../shared/components/status-badge/st
                 <td class="px-4 py-3">
                   <app-status-badge [status]="printer.status" />
                 </td>
-                <td class="px-4 py-3 text-gray-500">{{ locationName(printer.location) }}</td>
+                <td class="px-4 py-3 text-gray-500">{{ locationSvc.getName(printer.location) }}</td>
                 <td class="px-4 py-3 text-gray-500 truncate max-w-40">{{ printer.model }}</td>
                 <td class="px-4 py-3 text-gray-400 text-xs">
                   {{ printer.last_polled_at ? (printer.last_polled_at | date:'short') : 'Never' }}
@@ -174,11 +175,11 @@ import { StatusBadgeComponent } from '../../../shared/components/status-badge/st
 export class PrinterListComponent implements OnInit {
   private readonly svc = inject(PrinterService);
   private readonly router = inject(Router);
+  protected readonly locationSvc = inject(LocationService);
 
   printers = signal<Printer[]>([]);
   search = signal('');
   statusFilter = signal('');
-  locationName = locationName;
   sortBy = signal<'ip_address' | 'name' | 'status' | 'location' | 'model' | 'last_polled_at' | 'has_open_ticket'>('ip_address');
   sortDir = signal<'asc' | 'desc'>('asc');
   brandFilter = signal<string>('');
@@ -190,7 +191,7 @@ export class PrinterListComponent implements OnInit {
       const matchesSearch = !q ||
         p.name.toLowerCase().includes(q) ||
         p.ip_address.includes(q) ||
-        p.location.toLowerCase().includes(q) ||
+        this.locationSvc.getName(p.location).toLowerCase().includes(q) ||
         p.model.toLowerCase().includes(q);
       const matchesStatus = !this.statusFilter() || p.status === this.statusFilter();
       const matchesBrand = !this.brandFilter() || detectBrand(p.model) === this.brandFilter();

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
+import { LocationService } from './core/services/location.service';
 
 @Component({
   selector: 'app-root',
@@ -84,4 +85,10 @@ import { RouterModule, RouterOutlet } from '@angular/router';
     </div>
   `,
 })
-export class AppComponent {}
+export class AppComponent {
+  private readonly locationSvc = inject(LocationService);
+
+  ngOnInit() {
+    this.locationSvc.load();
+  }
+}

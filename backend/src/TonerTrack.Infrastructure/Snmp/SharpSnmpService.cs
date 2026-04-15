@@ -2,6 +2,8 @@ using System.Net;
 using Lextm.SharpSnmpLib;
 using Lextm.SharpSnmpLib.Messaging;
 using Microsoft.Extensions.Logging;
+using Polly;
+using Polly.Retry;
 using TonerTrack.Application.Common.Interfaces;
 using TonerTrack.Domain.Entities;
 using TonerTrack.Domain.ValueObjects;
@@ -107,16 +109,22 @@ public sealed class SharpSnmpService(ILogger<SharpSnmpService> logger) : ISnmpSe
         string ip, string community, string oid, CancellationToken ct) =>
         Task.Run(() =>
         {
+            var retryPolicy = Policy
+                .Handle<Exception>(ex => ex is not Lextm.SharpSnmpLib.Messaging.TimeoutException)
+                .WaitAndRetry(2, attempt => TimeSpan.FromMilliseconds(300 * attempt));
             try
             {
-                var endpoint = new IPEndPoint(IPAddress.Parse(ip), SnmpPort);
-                var variables = new List<Variable> { new (new ObjectIdentifier(oid)) };
-                var result = Messenger.Get(Version, endpoint,
-                    new OctetString(community), variables, TimeoutMs);
+                return retryPolicy.Execute(() =>
+                {
+                    var endpoint = new IPEndPoint(IPAddress.Parse(ip), SnmpPort);
+                    var variables = new List<Variable> { new(new ObjectIdentifier(oid)) };
+                    var result = Messenger.Get(Version, endpoint,
+                        new OctetString(community), variables, TimeoutMs);
 
-                if (result.Count == 0) return null;
-                var val = result[0].Data;
-                return val is NoSuchObject or NoSuchInstance ? null : val.ToString();
+                    if (result.Count == 0) return null;
+                    var val = result[0].Data;
+                    return val is NoSuchObject or NoSuchInstance ? null : val.ToString();
+                });
             }
             catch (Lextm.SharpSnmpLib.Messaging.TimeoutException) { return null; }
             catch (Exception ex)

@@ -1,10 +1,14 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using MediatR;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Options;
 using TonerTrack.Api.Extensions;
 using TonerTrack.Api.Middleware;
 using TonerTrack.Application.Discovery;
 using TonerTrack.Infrastructure.DependencyInjection;
+using TonerTrack.Infrastructure.NinjaRmm;
+using TonerTrack.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,16 +36,31 @@ builder.Services
     });
 
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSingleton<IValidateOptions<NinjaRmmOptions>, NinjaRmmOptionsValidator>();
 builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new() { Title = "TonerTrack API", Version = "v1" }));
 
 builder.Services.AddCors(o =>
     o.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 
+// Health checks
+builder.Services.AddHealthChecks()
+    .AddCheck("data_file", () =>
+    {
+        var opts = builder.Configuration
+            .GetSection(JsonPersistenceOptions.Section)
+            .Get<JsonPersistenceOptions>() ?? new();
+        var dir = opts.DataDirectory;
+        return Directory.Exists(dir)
+            ? HealthCheckResult.Healthy()
+            : HealthCheckResult.Degraded($"Data directory not found: {dir}");
+    });
+
 // Pipelines
 var app = builder.Build();
 
 app.UseMiddleware<GlobalExceptionMiddleware>();
+app.UseMiddleware<ApiKeyMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
@@ -52,6 +71,7 @@ if (app.Environment.IsDevelopment())
 app.UseCors();
 app.UseStaticFiles();   // serves wwwroot/ 
 app.MapControllers();
+app.MapHealthChecks("/health");
 
 // banner
 var log = app.Services.GetRequiredService<ILogger<Program>>();

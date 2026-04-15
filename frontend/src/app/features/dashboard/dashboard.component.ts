@@ -2,9 +2,10 @@ import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PrinterService } from '../../core/services/printer.service';
-import { Printer, PrinterStats, locationName, detectBrand, BRANDS } from '../../core/models/printer.model';
+import { Printer, PrinterStats, detectBrand, BRANDS } from '../../core/models/printer.model';
 import { StatusBadgeComponent } from '../../shared/components/status-badge/status-badge.component';
 import { TonerBarComponent } from '../../shared/components/toner-bar/toner-bar.component';
+import { LocationService } from '../../core/services/location.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -128,7 +129,7 @@ import { TonerBarComponent } from '../../shared/components/toner-bar/toner-bar.c
 
             <!-- Footer -->
             <div class="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between">
-              <span class="text-xs text-gray-400">{{ locationName(printer.location) }}</span>
+              <span class="text-xs text-gray-400">{{ locationSvc.getName(printer.location) }}</span>
               <span class="text-xs text-gray-400">
                 {{ printer.last_polled_at ? timeAgo(printer.last_polled_at) : 'Never polled' }}
               </span>
@@ -153,13 +154,13 @@ import { TonerBarComponent } from '../../shared/components/toner-bar/toner-bar.c
 })
 export class DashboardComponent implements OnInit {
   private readonly svc = inject(PrinterService);
+  protected readonly locationSvc = inject(LocationService);
 
   printers = signal<Printer[]>([]);
   stats = signal<PrinterStats | null>(null);
   polling = signal(false);
   activeFilter = signal<string>('all');
   search = signal('');
-  locationName = locationName;
   activeBrandFilter = signal<string>('all');
   detectBrand = detectBrand;
   brands = BRANDS;
@@ -196,6 +197,7 @@ export class DashboardComponent implements OnInit {
   load() {
     this.svc.getAll().subscribe(p => this.printers.set(p));
     this.svc.getStats().subscribe(s => this.stats.set(s));
+    this.locationSvc.load();
   }
 
   pollAll() {

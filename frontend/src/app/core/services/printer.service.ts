@@ -54,6 +54,10 @@ export class PrinterService {
     return this.http.post<any>(`${this.base}/printers/poll-all`, {});
   }
 
+  getLocations(): Observable<Record<string, string>> {
+    return this.http.get<Record<string, string>>(`${this.base}/locations`);
+  }
+
   // Discovery
 
   runDiscovery(): Observable<DiscoveryResult> {

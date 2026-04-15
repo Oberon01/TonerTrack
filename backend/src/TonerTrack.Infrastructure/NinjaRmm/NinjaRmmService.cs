@@ -146,6 +146,18 @@ public sealed class NinjaRmmService(
         [property: JsonPropertyName("expires_in")] int ExpiresIn);
 }
 
+public sealed class NinjaRmmOptionsValidator : IValidateOptions<NinjaRmmOptions>
+{
+    public ValidateOptionsResult Validate(string? name, NinjaRmmOptions options)
+    {
+        if (string.IsNullOrWhiteSpace(options.ClientId))
+            return ValidateOptionsResult.Fail("NinjaRmm:ClientId is required.");
+        if (string.IsNullOrWhiteSpace(options.RefreshToken))
+            return ValidateOptionsResult.Fail("NinjaRmm:RefreshToken is required.");
+        return ValidateOptionsResult.Success;
+    }
+}
+
 // Options class for configuring NinjaRMM API credentials and defaults.
 public sealed class NinjaRmmOptions
 {

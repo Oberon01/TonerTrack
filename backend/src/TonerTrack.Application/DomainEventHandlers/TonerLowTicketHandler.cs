@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TonerTrack.Application.Common.Interfaces;
+using TonerTrack.Application.NinjaRmm;
 using TonerTrack.Domain.Events;
 
 namespace TonerTrack.Application.DomainEventHandlers;
@@ -22,6 +23,7 @@ public sealed record PrinterStatusChangedNotification(PrinterStatusChangedEvent 
 public sealed class TonerLowTicketHandler(
     INinjaRmmService logger_ninja,   // renamed param to satisfy primary-ctor
     IOptions<NinjaRmmTicketOptions> opts,
+    IOptions<LocationOptions> locationOpts,
     ILogger<TonerLowTicketHandler> logger)
     : INotificationHandler<PrinterTonerLowEventNotification>
 {
@@ -29,11 +31,12 @@ public sealed class TonerLowTicketHandler(
     {
         var evt = notification.Event;
         var o = opts.Value;
+        var locOpts = locationOpts.Value;
 
         var lowList = string.Join("\n",
             evt.LowSupplies.Select(s => $"  • {s.Name}: {s.Level.Display}"));
 
-        var locationDisplay = GetLocationName(evt.Location);
+        var locationDisplay = locOpts.GetName(evt.Location);
         var prefix = string.IsNullOrEmpty(locationDisplay) ? "" : $"[{locationDisplay}]";
 
         var subject = $"Low Toner Alert – ({prefix}) {evt.PrinterName}";
@@ -57,20 +60,6 @@ public sealed class TonerLowTicketHandler(
                 evt.PrinterName, evt.IpAddress, ex.Message);
         }
     }
-
-    private static readonly Dictionary<string, string> LocationNames = new()
-{
-    { "1", "Coppell" },
-    { "3", "Alliance" },
-    { "4", "North Freeport" }
-};
-
-    private static string GetLocationName(string? locationId)
-    {
-        if (string.IsNullOrEmpty(locationId)) return "";
-        return LocationNames.TryGetValue(locationId, out var name) ? name : locationId;
-    }
-}
 
 // Options class for configuring ticket defaults when auto-creating tickets from domain events.
 

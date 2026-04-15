@@ -4,9 +4,10 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { NgChartsModule } from 'ng2-charts';
 import { ChartData, ChartOptions } from 'chart.js';
 import { PrinterService } from '../../../core/services/printer.service';
-import { Printer, UsageDto, locationName } from '../../../core/models/printer.model';
+import { Printer, UsageDto } from '../../../core/models/printer.model';
 import { StatusBadgeComponent } from '../../../shared/components/status-badge/status-badge.component';
 import { TonerBarComponent } from '../../../shared/components/toner-bar/toner-bar.component';
+import { LocationService } from '../../../core/services/location.service';
 
 @Component({
   selector: 'app-printer-detail',
@@ -70,7 +71,7 @@ import { TonerBarComponent } from '../../../shared/components/toner-bar/toner-ba
             </div>
             <div class="flex justify-between">
               <dt class="text-gray-500">Location</dt>
-              <dd class="text-gray-900">{{ locationName(printer()!.location) }}</dd>
+              <dd class="text-gray-900">{{ locationSvc.getName(printer()!.location) }}</dd>
             </div>
             <div class="flex justify-between">
               <dt class="text-gray-500">Community</dt>
@@ -177,11 +178,11 @@ import { TonerBarComponent } from '../../../shared/components/toner-bar/toner-ba
 export class PrinterDetailComponent implements OnInit {
   private readonly svc = inject(PrinterService);
   private readonly route = inject(ActivatedRoute);
+  protected readonly locationSvc = inject(LocationService);
 
   printer = signal<Printer | null>(null);
   usage = signal<UsageDto | null>(null);
   polling = signal(false);
-  locationName = locationName;
 
   chartOptions: ChartOptions = {
     responsive: true,
