@@ -118,6 +118,11 @@ public sealed class Printer
 
         RecordPages(result.TotalPages);
 
+        // Only overwrite when SNMP actually returned rows — preserves any manually-set value
+        // for printers that don't implement prtInputType
+        if (result.TrayCount > 0)
+            PaperTrayCount = result.TrayCount;
+
         Status = EvaluateStatus();
 
         // Raise events after state is consistent
@@ -237,4 +242,5 @@ public sealed record PrinterPollResult(
     string? SerialNumber,
     long? TotalPages,
     IReadOnlyList<Supply> Supplies,
-    IReadOnlyList<PrinterAlert> Alerts);
+    IReadOnlyList<PrinterAlert> Alerts,
+    int TrayCount = 0);
