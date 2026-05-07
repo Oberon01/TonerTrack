@@ -24,7 +24,8 @@ public sealed class SharpSnmpService(ILogger<SharpSnmpService> logger) : ISnmpSe
     private const string OidSupplyLevelBase = "1.3.6.1.2.1.43.11.1.1.9.1"; // Supply level table base OID
     private const string OidSupplyMaxBase = "1.3.6.1.2.1.43.11.1.1.8.1"; // Supply max capacity table base OID
     private const string OidAlertDescBase = "1.3.6.1.2.1.43.18.1.1.8"; // Alert description table base OID
-    private const string OidAlertSevBase = "1.3.6.1.2.1.43.18.1.1.2"; // Alert severity table base OID
+    private const string OidAlertSevBase  = "1.3.6.1.2.1.43.18.1.1.2"; // Alert severity table base OID
+    private const string OidInputTypeBase = "1.3.6.1.2.1.43.8.2.1.2";  // prtInputType — one row per input source
 
     private const int SnmpPort = 161;
     private const int TimeoutMs = 2000;
@@ -47,10 +48,11 @@ public sealed class SharpSnmpService(ILogger<SharpSnmpService> logger) : ISnmpSe
         var pageCountStr = await SnmpGetAsync(ipAddress, community, OidPageCount, ct);
         long? pageCount  = long.TryParse(pageCountStr, out var pc) ? pc : null;
 
-        var supplies = await BuildSuppliesAsync(ipAddress, community, ct);
-        var alerts = await BuildAlertsAsync(ipAddress, community, ct);
+        var supplies   = await BuildSuppliesAsync(ipAddress, community, ct);
+        var alerts     = await BuildAlertsAsync(ipAddress, community, ct);
+        var trayCount  = await CountInputTraysAsync(ipAddress, community, ct);
 
-        return new PrinterPollResult(model, serial, pageCount, supplies, alerts);
+        return new PrinterPollResult(model, serial, pageCount, supplies, alerts, trayCount);
     }
 
     // Supply discovery
@@ -80,6 +82,13 @@ public sealed class SharpSnmpService(ILogger<SharpSnmpService> logger) : ISnmpSe
         }
 
         return supplies;
+    }
+
+    /// <summary>Counts paper input trays by walking prtInputType and counting rows.</summary>
+    private async Task<int> CountInputTraysAsync(string ip, string community, CancellationToken ct)
+    {
+        var table = await SnmpWalkAsync(ip, community, OidInputTypeBase, ct);
+        return table.Count;
     }
 
     /// <summary>Builds a list of active printer alerts by querying the printer's SNMP interface.</summary>
