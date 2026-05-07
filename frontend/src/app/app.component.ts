@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { LocationService } from './core/services/location.service';
@@ -85,7 +85,7 @@ import { LocationService } from './core/services/location.service';
     </div>
   `,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   private readonly locationSvc = inject(LocationService);
 
   ngOnInit() {

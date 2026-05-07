@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { PrinterService } from '../../../core/services/printer.service';
+import { LocationService } from '../../../core/services/location.service';
 
 @Component({
   selector: 'app-printer-form',
@@ -52,11 +53,18 @@ import { PrinterService } from '../../../core/services/printer.service';
             <label class="label">Location</label>
             <select formControlName="location" class="input">
               <option value="">-- Select Location --</option>
-              <option value="1">Coppell</option>
-              <option value="3">Alliance</option>
-              <option value="4">North Freeport</option>
+              @for (loc of locationEntries(); track loc[0]) {
+                <option [value]="loc[0]">{{ loc[1] }}</option>
+              }
             </select>
             <p class="text-xs text-gray-400 mt-1">NinjaRMM location ID for ticket routing</p>
+          </div>
+
+          <div>
+            <label class="label">Paper Trays</label>
+            <input formControlName="paper_tray_count" type="number" min="0" class="input"
+              placeholder="0" />
+            <p class="text-xs text-gray-400 mt-1">Number of physical paper input trays</p>
           </div>
 
           <!-- Error message -->
@@ -82,21 +90,27 @@ import { PrinterService } from '../../../core/services/printer.service';
   `,
 })
 export class PrinterFormComponent implements OnInit {
-  private readonly svc    = inject(PrinterService);
-  private readonly route  = inject(ActivatedRoute);
-  private readonly router = inject(Router);
-  private readonly fb     = inject(FormBuilder);
+  private readonly svc         = inject(PrinterService);
+  private readonly route       = inject(ActivatedRoute);
+  private readonly router      = inject(Router);
+  private readonly fb          = inject(FormBuilder);
+  private readonly locationSvc = inject(LocationService);
+
+  locationEntries() {
+    return Object.entries(this.locationSvc.names());
+  }
 
   isEdit = signal(false);
   saving = signal(false);
   error  = signal('');
 
   form = this.fb.group({
-    name:       ['', Validators.required],
-    ip_address: ['', [Validators.required,
+    name:             ['', Validators.required],
+    ip_address:       ['', [Validators.required,
       Validators.pattern(/^(\d{1,3}\.){3}\d{1,3}$/)]],
-    community:  ['public'],
-    location:   [''],
+    community:        ['public'],
+    location:         [''],
+    paper_tray_count: [0, [Validators.min(0)]],
   });
 
   get ip(): string {
@@ -108,10 +122,11 @@ export class PrinterFormComponent implements OnInit {
       this.isEdit.set(true);
       this.svc.getByIp(this.ip).subscribe(p => {
         this.form.patchValue({
-          name:       p.name,
-          ip_address: p.ip_address,
-          community:  p.community,
-          location:   p.location,
+          name:             p.name,
+          ip_address:       p.ip_address,
+          community:        p.community,
+          location:         p.location,
+          paper_tray_count: p.paper_tray_count ?? 0,
         });
         this.form.get('ip_address')?.disable();
       });
@@ -125,9 +140,10 @@ export class PrinterFormComponent implements OnInit {
 
     const val = this.form.getRawValue();
 
+    const trays = val.paper_tray_count ?? 0;
     const req$ = this.isEdit()
-      ? this.svc.update(this.ip, { name: val.name!, community: val.community!, location: val.location! })
-      : this.svc.add({ name: val.name!, ip_address: val.ip_address!, community: val.community!, location: val.location! });
+      ? this.svc.update(this.ip, { name: val.name!, community: val.community!, location: val.location!, paper_tray_count: trays })
+      : this.svc.add({ name: val.name!, ip_address: val.ip_address!, community: val.community!, location: val.location!, paper_tray_count: trays });
 
     req$.subscribe({
       next: p => this.router.navigate(['/printers', p.ip_address]),

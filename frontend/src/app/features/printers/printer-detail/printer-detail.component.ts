@@ -78,6 +78,10 @@ import { LocationService } from '../../../core/services/location.service';
               <dd class="text-gray-900 font-mono text-xs">{{ printer()!.community }}</dd>
             </div>
             <div class="flex justify-between">
+              <dt class="text-gray-500">Paper Trays</dt>
+              <dd class="text-gray-900">{{ printer()!.paper_tray_count || '—' }}</dd>
+            </div>
+            <div class="flex justify-between">
               <dt class="text-gray-500">Total Pages</dt>
               <dd class="text-gray-900">{{ printer()!.total_pages_printed ?? '—' }}</dd>
             </div>

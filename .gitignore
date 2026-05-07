@@ -365,3 +365,10 @@ FodyWeavers.xsd
 # Data folder
 data/*
 /src/TonerTrack.Api/data/printers.json
+/backend/src/TonerTrack.Application/DomainEventHandlers/TonerLowTicketHandler.zip
+
+# Angular CLI cache
+frontend/.angular/
+
+# Claude Code session data
+.claude/

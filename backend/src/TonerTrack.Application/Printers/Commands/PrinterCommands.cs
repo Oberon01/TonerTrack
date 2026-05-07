@@ -9,7 +9,7 @@ namespace TonerTrack.Application.Printers.Commands;
 
 // Add printer
 public sealed record AddPrinterCommand(
-    string Name, string IpAddress, string Location = "", string Community = "public") : IRequest<PrinterDto>;
+    string Name, string IpAddress, string Location = "", string Community = "public", int PaperTrayCount = 0) : IRequest<PrinterDto>;
 
 public sealed class AddPrinterHandler(IPrinterRepository repo)
     : IRequestHandler<AddPrinterCommand, PrinterDto>
@@ -21,6 +21,7 @@ public sealed class AddPrinterHandler(IPrinterRepository repo)
 
         var printer = Printer.Create(cmd.IpAddress, cmd.Name, cmd.Community);
         printer.SetLocation(cmd.Location);
+        printer.SetPaperTrayCount(cmd.PaperTrayCount);
         await repo.AddAsync(printer, ct);
         return PrinterDto.FromEntity(printer);
     }
@@ -28,7 +29,7 @@ public sealed class AddPrinterHandler(IPrinterRepository repo)
 
 // Update printer (name and/or community string)
 public sealed record UpdatePrinterCommand(
-    string IpAddress, string? Name, string? Community, string? Location = null) : IRequest<PrinterDto>;
+    string IpAddress, string? Name, string? Community, string? Location = null, int? PaperTrayCount = null) : IRequest<PrinterDto>;
 
 public sealed class UpdatePrinterHandler(IPrinterRepository repo)
     : IRequestHandler<UpdatePrinterCommand, PrinterDto>
@@ -41,6 +42,7 @@ public sealed class UpdatePrinterHandler(IPrinterRepository repo)
         if (cmd.Name is not null) printer.Rename(cmd.Name);
         if (cmd.Community is not null) printer.SetCommunity(cmd.Community);
         if (cmd.Location is not null) printer.SetLocation(cmd.Location);
+        if (cmd.PaperTrayCount is not null) printer.SetPaperTrayCount(cmd.PaperTrayCount.Value);
 
         await repo.UpdateAsync(printer, ct);
         return PrinterDto.FromEntity(printer);

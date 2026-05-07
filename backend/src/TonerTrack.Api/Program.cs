@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using TonerTrack.Api.Extensions;
 using TonerTrack.Api.Middleware;
 using TonerTrack.Application.Discovery;
+using TonerTrack.Application.NinjaRmm;
 using TonerTrack.Infrastructure.DependencyInjection;
 using TonerTrack.Infrastructure.NinjaRmm;
 using TonerTrack.Infrastructure.Persistence;
@@ -34,6 +35,10 @@ builder.Services
         o.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
         o.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
     });
+
+builder.Services.Configure<LocationOptions>(opts =>
+    opts.Names = builder.Configuration.GetSection(LocationOptions.Section)
+                     .Get<Dictionary<string, string>>() ?? []);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSingleton<IValidateOptions<NinjaRmmOptions>, NinjaRmmOptionsValidator>();

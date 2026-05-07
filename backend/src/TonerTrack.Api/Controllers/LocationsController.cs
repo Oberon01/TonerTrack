@@ -12,5 +12,16 @@ public sealed class LocationsController(IOptions<LocationOptions> opts) : Contro
     // GET /api/locations
     [HttpGet]
     [ProducesResponseType(typeof(Dictionary<string, string>), StatusCodes.Status200OK)]
-    public IActionResult GetAll() => Ok(opts.Value.Names);
+    public IActionResult GetAll()
+    {
+        var names = opts.Value.Names;
+
+        foreach (var kv in names)
+        {
+            Console.WriteLine($"Location: {kv.Key} - {kv.Value}");
+        }
+        return Ok(names);
+    }
+
+
 }

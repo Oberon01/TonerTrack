@@ -8,20 +8,22 @@
     "model": "HP LaserJet Tank MFP 2604sdw",
     "serial": "VND3123980",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:02.0479206Z",
-    "total_pages": 4309,
-    "last_total_pages": 4309,
+    "timestamp": "2026-05-07T16:51:57.1155592Z",
+    "total_pages": 4582,
+    "last_total_pages": 4582,
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {
-      "HP W1530A": "95%",
-      "HP": "90%"
+      "HP W1530A": "90%",
+      "HP": "89%"
     },
     "pages_history": {
-      "2026-04": 7
+      "2026-04": 202,
+      "2026-05": 78
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.82.206": {
     "ip": "10.11.82.206",
@@ -32,9 +34,9 @@
     "model": "SATO S84NX TT 203dpi STD",
     "serial": "HA103238",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:02.0260064Z",
-    "total_pages": 87497,
-    "last_total_pages": 87497,
+    "timestamp": "2026-05-07T16:51:57.0787086Z",
+    "total_pages": 90385,
+    "last_total_pages": 90385,
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
@@ -42,9 +44,11 @@
       "Ribbon": "100%"
     },
     "pages_history": {
-      "2026-04": 2035
+      "2026-04": 4681,
+      "2026-05": 242
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.82.192": {
     "ip": "10.11.82.192",
@@ -55,9 +59,9 @@
     "model": "Canon iR-ADV C3530 48.20",
     "serial": "XTD03850",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:02.2650109Z",
-    "total_pages": 112672,
-    "last_total_pages": 112672,
+    "timestamp": "2026-05-07T16:51:57.2954942Z",
+    "total_pages": 116073,
+    "last_total_pages": 116073,
     "offline_attempts": 0,
     "toner_cartridges": {
       "Canon GPR-53 Black Toner": "100%",
@@ -74,9 +78,11 @@
     },
     "other": {},
     "pages_history": {
-      "2026-04": 476
+      "2026-04": 3159,
+      "2026-05": 718
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.81.232": {
     "ip": "10.11.81.232",
@@ -87,7 +93,7 @@
     "model": "Canon MF650C Series",
     "serial": "YPS14802",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:02.7008488Z",
+    "timestamp": "2026-05-07T16:57:37.7602495Z",
     "total_pages": 3189,
     "last_total_pages": 3189,
     "offline_attempts": 0,
@@ -95,14 +101,16 @@
       "Canon Cartridge 067 Black Toner": "89%",
       "Canon Cartridge 067 Cyan Toner": "87%",
       "Canon Cartridge 067 Magenta Toner": "87%",
-      "Canon Cartridge 067 Yellow Toner": "85%"
+      "Canon Cartridge 067 Yellow Toner": "84%"
     },
     "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 1
+      "2026-04": 1,
+      "2026-05": 0
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.81.80": {
     "ip": "10.11.81.80",
@@ -112,22 +120,24 @@
     "user_overridden": false,
     "model": "HP LaserJet MFP M227fdw",
     "serial": "VNG3G17849",
-    "status": "Error",
-    "timestamp": "2026-04-15T13:20:02.0332235Z",
-    "total_pages": 20571,
-    "last_total_pages": 20571,
+    "status": "Ok",
+    "timestamp": "2026-05-07T16:51:57.0886313Z",
+    "total_pages": 20597,
+    "last_total_pages": 20597,
     "offline_attempts": 0,
     "toner_cartridges": {
-      "Black Cartridge HP CF230A": "0%"
+      "Black Cartridge HP CF230X": "54%"
     },
     "drum_units": {
       "Imaging Drum HP CF232A": "67%"
     },
     "other": {},
     "pages_history": {
-      "2026-04": 0
+      "2026-04": 22,
+      "2026-05": 4
     },
-    "has_open_ticket": true
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.80.218": {
     "ip": "10.11.80.218",
@@ -138,13 +148,14 @@
     "model": "Zebra Technologies ZD621",
     "serial": "N/A",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:01.9799988Z",
+    "timestamp": "2026-05-07T16:51:58.9250622Z",
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {},
     "pages_history": {},
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.80.122": {
     "ip": "10.10.80.122",
@@ -155,19 +166,21 @@
     "model": "HP LaserJet Pro MFP 4101fdw",
     "serial": "CNCRR58B8X",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:01.9859826Z",
-    "total_pages": 174745,
-    "last_total_pages": 174745,
+    "timestamp": "2026-05-07T16:51:57.107328Z",
+    "total_pages": 181123,
+    "last_total_pages": 181123,
     "offline_attempts": 0,
     "toner_cartridges": {
-      "Black Cartridge HP W1480X": "61%"
+      "Black Cartridge HP W1480X": "86%"
     },
     "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 1201
+      "2026-04": 6015,
+      "2026-05": 1564
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.82.223": {
     "ip": "10.11.82.223",
@@ -178,9 +191,9 @@
     "model": "SATO S84NX TT 203dpi STD",
     "serial": "HA103239",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:02.0450777Z",
-    "total_pages": 248494,
-    "last_total_pages": 248494,
+    "timestamp": "2026-05-07T16:51:57.0874338Z",
+    "total_pages": 261074,
+    "last_total_pages": 261074,
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
@@ -188,9 +201,11 @@
       "Ribbon": "100%"
     },
     "pages_history": {
-      "2026-04": 2277
+      "2026-04": 9013,
+      "2026-05": 5844
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.80.123": {
     "ip": "10.10.80.123",
@@ -200,20 +215,21 @@
     "user_overridden": false,
     "model": "HP LaserJet Pro MFP 4101fdw",
     "serial": "CNBRQ5838K",
-    "status": "Ok",
-    "timestamp": "2026-04-15T13:20:02.0069106Z",
-    "total_pages": 125185,
-    "last_total_pages": 125185,
-    "offline_attempts": 0,
+    "status": "Offline",
+    "timestamp": "2026-05-07T16:51:58.9860227Z",
+    "total_pages": 126012,
+    "last_total_pages": 126012,
+    "offline_attempts": 9,
     "toner_cartridges": {
-      "Black Cartridge HP W1480X": "93%"
+      "Black Cartridge HP W1480X": "86%"
     },
     "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 530
+      "2026-04": 1357
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.25": {
     "ip": "10.10.5.25",
@@ -224,12 +240,12 @@
     "model": "Canon iR-ADV C355 27.22",
     "serial": "WKE03557",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:01.939349Z",
-    "total_pages": 437644,
-    "last_total_pages": 437644,
+    "timestamp": "2026-05-07T16:51:57.0176462Z",
+    "total_pages": 442963,
+    "last_total_pages": 442963,
     "offline_attempts": 0,
     "toner_cartridges": {
-      "Canon GPR-51 Black Toner": "37%",
+      "Canon GPR-51 Black Toner": "23%",
       "Canon GPR-51 Cyan Toner": "100%",
       "Canon GPR-51 Magenta Toner": "100%",
       "Canon GPR-51 Yellow Toner": "100%",
@@ -243,9 +259,11 @@
     },
     "other": {},
     "pages_history": {
-      "2026-04": 1205
+      "2026-04": 4850,
+      "2026-05": 1674
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.50": {
     "ip": "10.10.5.50",
@@ -256,9 +274,9 @@
     "model": "Canon iR-ADV C5535 78.16",
     "serial": "XUW09384",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:02.7587541Z",
-    "total_pages": 75177,
-    "last_total_pages": 75177,
+    "timestamp": "2026-05-07T16:51:57.2406077Z",
+    "total_pages": 75584,
+    "last_total_pages": 75584,
     "offline_attempts": 0,
     "toner_cartridges": {
       "Canon GPR-55 Black Toner": "100%",
@@ -275,9 +293,11 @@
     },
     "other": {},
     "pages_history": {
-      "2026-04": 371
+      "2026-04": 613,
+      "2026-05": 165
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.163": {
     "ip": "10.10.5.163",
@@ -288,19 +308,21 @@
     "model": "T6204e Thermal Printer",
     "serial": "T6EV3422429045 ",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:02.7506492Z",
-    "total_pages": 43758,
-    "last_total_pages": 43758,
+    "timestamp": "2026-05-07T16:51:57.2279366Z",
+    "total_pages": 63285,
+    "last_total_pages": 63285,
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {
-      "ribbon wax": "19%"
+      "ribbon wax": "Unknown"
     },
     "pages_history": {
-      "2026-04": 7137
+      "2026-04": 26373,
+      "2026-05": 291
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.9": {
     "ip": "10.10.5.9",
@@ -311,19 +333,21 @@
     "model": "HP LaserJet Pro MFP 4101fdw",
     "serial": "CNCRR58BFW",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:02.7857625Z",
-    "total_pages": 13896,
-    "last_total_pages": 13896,
+    "timestamp": "2026-05-07T16:51:57.3115934Z",
+    "total_pages": 13993,
+    "last_total_pages": 13993,
     "offline_attempts": 0,
     "toner_cartridges": {
-      "Black Cartridge HP W1480X": "73%"
+      "Black Cartridge HP W1480X": "71%"
     },
     "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 13
+      "2026-04": 75,
+      "2026-05": 35
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.59": {
     "ip": "10.10.5.59",
@@ -334,13 +358,14 @@
     "model": "Zebra Technologies ZD621",
     "serial": "N/A",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:02.8066277Z",
+    "timestamp": "2026-05-07T16:51:59.1767397Z",
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {},
     "pages_history": {},
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.41": {
     "ip": "10.10.5.41",
@@ -351,19 +376,21 @@
     "model": "T6204e Thermal Printer",
     "serial": "T6EV3422408084 ",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:02.8347518Z",
-    "total_pages": 1718340,
-    "last_total_pages": 1718340,
+    "timestamp": "2026-05-07T16:51:57.4534625Z",
+    "total_pages": 1743574,
+    "last_total_pages": 1743574,
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {
-      "ribbon wax": "55%"
+      "ribbon wax": "64%"
     },
     "pages_history": {
-      "2026-04": 9773
+      "2026-04": 27087,
+      "2026-05": 7920
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.20": {
     "ip": "10.10.5.20",
@@ -374,19 +401,21 @@
     "model": "Canon iR-ADV 525 68.33",
     "serial": "2CK04158",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:03.4549136Z",
-    "total_pages": 645814,
-    "last_total_pages": 645814,
+    "timestamp": "2026-05-07T16:51:57.5273035Z",
+    "total_pages": 654143,
+    "last_total_pages": 654143,
     "offline_attempts": 0,
     "toner_cartridges": {
-      "Canon Toner T03 Black": "71%"
+      "Canon Toner T03 Black": "21%"
     },
     "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 1788
+      "2026-04": 7499,
+      "2026-05": 2618
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.82.171": {
     "ip": "10.11.82.171",
@@ -396,20 +425,22 @@
     "user_overridden": false,
     "model": "HP LaserJet Pro MFP M428fdw",
     "serial": "CNDRP613Y8",
-    "status": "Offline",
-    "timestamp": "2026-04-15T13:20:05.5103102Z",
-    "total_pages": 8752,
-    "last_total_pages": 8752,
-    "offline_attempts": 3,
-    "toner_cartridges": {},
+    "status": "Ok",
+    "timestamp": "2026-05-07T16:51:57.8233328Z",
+    "total_pages": 10317,
+    "last_total_pages": 10317,
+    "offline_attempts": 0,
+    "toner_cartridges": {
+      "Black Cartridge HP CF258X": "49%"
+    },
     "drum_units": {},
-    "other": {
-      "Black Cartridge HP CF258X": "66%"
-    },
+    "other": {},
     "pages_history": {
-      "2026-04": 0
+      "2026-04": 1540,
+      "2026-05": 25
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.80.124": {
     "ip": "10.10.80.124",
@@ -420,13 +451,14 @@
     "model": "Brother ADS-4900W",
     "serial": "U66636K2X112063",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:04.578063Z",
+    "timestamp": "2026-05-07T16:52:00.0420775Z",
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {},
     "pages_history": {},
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.19": {
     "ip": "10.10.5.19",
@@ -437,9 +469,9 @@
     "model": "Canon iR-ADV 4535 48.10",
     "serial": "XVZ08505",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:03.8677372Z",
-    "total_pages": 510241,
-    "last_total_pages": 510241,
+    "timestamp": "2026-05-07T16:51:57.6168197Z",
+    "total_pages": 527541,
+    "last_total_pages": 527541,
     "offline_attempts": 0,
     "toner_cartridges": {
       "Canon GPR-57 Black Toner": "100%",
@@ -450,9 +482,11 @@
     },
     "other": {},
     "pages_history": {
-      "2026-04": 2822
+      "2026-04": 14697,
+      "2026-05": 5425
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.80.98": {
     "ip": "10.10.80.98",
@@ -463,19 +497,21 @@
     "model": "HP LaserJet Pro MFP 4101fdw",
     "serial": "CNCRR58BGF",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:03.9575754Z",
-    "total_pages": 9206,
-    "last_total_pages": 9206,
+    "timestamp": "2026-05-07T16:51:57.7323501Z",
+    "total_pages": 9398,
+    "last_total_pages": 9398,
     "offline_attempts": 0,
     "toner_cartridges": {
-      "Black Cartridge HP W1480X": "78%"
+      "Black Cartridge HP W1480X": "75%"
     },
     "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 9
+      "2026-04": 171,
+      "2026-05": 30
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.17": {
     "ip": "10.10.5.17",
@@ -486,15 +522,15 @@
     "model": "Canon iR-ADV C5535 78.16",
     "serial": "XUW09391",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:03.9024686Z",
-    "total_pages": 232542,
-    "last_total_pages": 232542,
+    "timestamp": "2026-05-07T16:51:57.6497025Z",
+    "total_pages": 247092,
+    "last_total_pages": 247092,
     "offline_attempts": 0,
     "toner_cartridges": {
       "Canon GPR-55 Black Toner": "100%",
-      "Canon GPR-55 Cyan Toner": "57%",
-      "Canon GPR-55 Magenta Toner": "56%",
-      "Canon GPR-55 Yellow Toner": "52%",
+      "Canon GPR-55 Cyan Toner": "52%",
+      "Canon GPR-55 Magenta Toner": "51%",
+      "Canon GPR-55 Yellow Toner": "48%",
       "Waste Toner": "Unknown"
     },
     "drum_units": {
@@ -505,9 +541,11 @@
     },
     "other": {},
     "pages_history": {
-      "2026-04": 2522
+      "2026-04": 12771,
+      "2026-05": 4301
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.83.6": {
     "ip": "10.11.83.6",
@@ -518,13 +556,14 @@
     "model": "N/A",
     "serial": "N/A",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:03.998638Z",
+    "timestamp": "2026-05-07T16:52:00.5548444Z",
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {},
     "pages_history": {},
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.2": {
     "ip": "10.10.5.2",
@@ -535,13 +574,14 @@
     "model": "Zebra Technologies ZT620",
     "serial": "N/A",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:03.9503388Z",
+    "timestamp": "2026-05-07T16:51:59.5258819Z",
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {},
     "pages_history": {},
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.156": {
     "ip": "10.10.5.156",
@@ -552,13 +592,14 @@
     "model": "Zebra Technologies ZD621",
     "serial": "N/A",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:03.9659984Z",
+    "timestamp": "2026-05-07T16:51:59.525477Z",
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {},
     "pages_history": {},
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.22": {
     "ip": "10.10.5.22",
@@ -569,19 +610,21 @@
     "model": "Canon iR-ADV 525 04.01",
     "serial": "2CK05652",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:03.9771072Z",
-    "total_pages": 507434,
-    "last_total_pages": 507434,
+    "timestamp": "2026-05-07T16:51:57.7829177Z",
+    "total_pages": 518491,
+    "last_total_pages": 518491,
     "offline_attempts": 0,
     "toner_cartridges": {
-      "Canon Toner T03 Black": "34%"
+      "Canon Toner T03 Black": "20%"
     },
     "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 2137
+      "2026-04": 10417,
+      "2026-05": 2777
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.82.143": {
     "ip": "10.11.82.143",
@@ -592,13 +635,14 @@
     "model": "Brother ADS-4900W",
     "serial": "U66636F4X113236",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:05.0592149Z",
+    "timestamp": "2026-05-07T16:51:59.6146134Z",
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {},
     "pages_history": {},
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.80.98": {
     "ip": "10.11.80.98",
@@ -609,13 +653,14 @@
     "model": "Zebra Technologies ZD621",
     "serial": "N/A",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:04.1097679Z",
+    "timestamp": "2026-05-07T16:51:59.8592857Z",
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {},
     "pages_history": {},
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.15": {
     "ip": "10.10.5.15",
@@ -623,12 +668,12 @@
     "community": "public",
     "location": "1",
     "user_overridden": false,
-    "model": "Canon iR-ADV C355 65.14",
+    "model": "Canon iR-ADV C355 81.25",
     "serial": "WKE01805",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:04.0648823Z",
-    "total_pages": 480926,
-    "last_total_pages": 480926,
+    "timestamp": "2026-05-07T16:51:58.0712066Z",
+    "total_pages": 488054,
+    "last_total_pages": 488054,
     "offline_attempts": 0,
     "toner_cartridges": {
       "Canon GPR-51 Black Toner": "100%",
@@ -645,9 +690,11 @@
     },
     "other": {},
     "pages_history": {
-      "2026-04": 943
+      "2026-04": 6038,
+      "2026-05": 2033
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.80.204": {
     "ip": "10.11.80.204",
@@ -657,18 +704,19 @@
     "user_overridden": false,
     "model": "SATO CL4NX 609dpi",
     "serial": "CM100595",
-    "status": "Ok",
-    "timestamp": "2026-04-15T13:20:04.1980607Z",
-    "total_pages": 1031,
-    "last_total_pages": 1031,
-    "offline_attempts": 0,
+    "status": "Offline",
+    "timestamp": "2026-05-07T16:52:00.1349467Z",
+    "total_pages": 1034,
+    "last_total_pages": 1034,
+    "offline_attempts": 6,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 34
+      "2026-04": 37
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.29": {
     "ip": "10.10.5.29",
@@ -679,28 +727,19 @@
     "model": "Canon iR-ADV C5535 81.21",
     "serial": "XUW10181",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:04.1371676Z",
-    "total_pages": 96235,
-    "last_total_pages": 96235,
+    "timestamp": "2026-05-07T16:52:01.0756314Z",
+    "total_pages": 106088,
+    "last_total_pages": 106088,
     "offline_attempts": 0,
-    "toner_cartridges": {
-      "Canon GPR-55 Black Toner": "100%",
-      "Canon GPR-55 Cyan Toner": "24%",
-      "Canon GPR-55 Magenta Toner": "26%",
-      "Canon GPR-55 Yellow Toner": "26%",
-      "Waste Toner": "Unknown"
-    },
-    "drum_units": {
-      "Black Drum Unit": "Unknown",
-      "Cyan Drum Unit": "Unknown",
-      "Magenta Drum Unit": "Unknown",
-      "Yellow Drum Unit": "Unknown"
-    },
+    "toner_cartridges": {},
+    "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 2430
+      "2026-04": 9270,
+      "2026-05": 3013
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.81.79": {
     "ip": "10.11.81.79",
@@ -711,9 +750,9 @@
     "model": "SATO S84NX TT 203dpi STD",
     "serial": "HA102574",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:04.3092951Z",
-    "total_pages": 263915,
-    "last_total_pages": 263915,
+    "timestamp": "2026-05-07T16:51:59.2507934Z",
+    "total_pages": 282899,
+    "last_total_pages": 282899,
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
@@ -721,9 +760,11 @@
       "Ribbon": "100%"
     },
     "pages_history": {
-      "2026-04": 1703
+      "2026-04": 15384,
+      "2026-05": 5303
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.26": {
     "ip": "10.10.5.26",
@@ -734,9 +775,9 @@
     "model": "Canon iR-ADV 4545 81.21",
     "serial": "XVR04239",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:04.5484179Z",
-    "total_pages": 606687,
-    "last_total_pages": 606687,
+    "timestamp": "2026-05-07T16:51:59.4066624Z",
+    "total_pages": 611829,
+    "last_total_pages": 611829,
     "offline_attempts": 0,
     "toner_cartridges": {
       "Canon GPR-57 Black Toner": "100%",
@@ -747,9 +788,11 @@
     },
     "other": {},
     "pages_history": {
-      "2026-04": 1016
+      "2026-04": 4849,
+      "2026-05": 1309
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.83.224": {
     "ip": "10.11.83.224",
@@ -760,19 +803,21 @@
     "model": "HP LaserJet Pro MFP 4101fdw",
     "serial": "CNCRR5G0D3",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:04.7267404Z",
-    "total_pages": 3922,
-    "last_total_pages": 3922,
+    "timestamp": "2026-05-07T16:51:59.5927636Z",
+    "total_pages": 6144,
+    "last_total_pages": 6144,
     "offline_attempts": 0,
     "toner_cartridges": {
-      "Black Cartridge HP W1480X": "82%"
+      "Black Cartridge HP W1480X": "60%"
     },
     "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 790
+      "2026-04": 2625,
+      "2026-05": 387
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.61": {
     "ip": "10.10.5.61",
@@ -783,13 +828,14 @@
     "model": "Zebra Technologies ZD621",
     "serial": "N/A",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:04.6029455Z",
+    "timestamp": "2026-05-07T16:52:01.340367Z",
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {},
     "pages_history": {},
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.37": {
     "ip": "10.10.5.37",
@@ -800,42 +846,21 @@
     "model": "T6204e Thermal Printer",
     "serial": "T6EV3422408088 ",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:04.7281269Z",
-    "total_pages": 18534,
-    "last_total_pages": 18534,
+    "timestamp": "2026-05-07T16:51:59.5945309Z",
+    "total_pages": 18542,
+    "last_total_pages": 18542,
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {
-      "ribbon wax": "65%"
+      "ribbon wax": "69%"
     },
     "pages_history": {
-      "2026-04": 1
+      "2026-04": 8,
+      "2026-05": 1
     },
-    "has_open_ticket": false
-  },
-  "10.10.80.114": {
-    "ip": "10.10.80.114",
-    "name": "SHOP",
-    "community": "public",
-    "location": "1",
-    "user_overridden": false,
-    "model": "HP LaserJet Pro MFP 4101fdw",
-    "serial": "CNCRR58BGV",
-    "status": "Ok",
-    "timestamp": "2026-04-15T13:20:04.8262098Z",
-    "total_pages": 10632,
-    "last_total_pages": 10632,
-    "offline_attempts": 0,
-    "toner_cartridges": {
-      "Black Cartridge HP W1480X": "86%"
-    },
-    "drum_units": {},
-    "other": {},
-    "pages_history": {
-      "2026-04": 88
-    },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.18": {
     "ip": "10.10.5.18",
@@ -846,10 +871,10 @@
     "model": "Canon iR-ADV C5535 72.18",
     "serial": "XUW10182",
     "status": "Offline",
-    "timestamp": "2026-04-15T13:20:06.8613265Z",
+    "timestamp": "2026-05-07T16:52:01.752387Z",
     "total_pages": 100838,
     "last_total_pages": 100838,
-    "offline_attempts": 8,
+    "offline_attempts": 17,
     "toner_cartridges": {
       "Canon GPR-55 Black Toner": "100%",
       "Canon GPR-55 Cyan Toner": "38%",
@@ -865,7 +890,8 @@
     },
     "other": {},
     "pages_history": {},
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.81.182": {
     "ip": "10.11.81.182",
@@ -876,22 +902,24 @@
     "model": "HP Color LaserJet Pro MFP M479fdw",
     "serial": "CNCRQ55582",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:05.1959043Z",
-    "total_pages": 27436,
-    "last_total_pages": 27436,
+    "timestamp": "2026-05-07T16:52:00.5687672Z",
+    "total_pages": 28388,
+    "last_total_pages": 28388,
     "offline_attempts": 0,
     "toner_cartridges": {
-      "Black Cartridge HP W2020X": "26%",
-      "Cyan Cartridge HP W2021X": "42%",
-      "Magenta Cartridge HP W2023X": "45%",
+      "Black Cartridge HP W2020A": "82%",
+      "Cyan Cartridge HP W2021X": "35%",
+      "Magenta Cartridge HP W2023X": "38%",
       "Yellow Cartridge HP W2022X": "Unknown"
     },
     "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 169
+      "2026-04": 826,
+      "2026-05": 295
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.60": {
     "ip": "10.10.5.60",
@@ -902,13 +930,14 @@
     "model": "Zebra Technologies ZD621",
     "serial": "N/A",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:04.9035716Z",
+    "timestamp": "2026-05-07T16:52:01.6927279Z",
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {},
     "pages_history": {},
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.31": {
     "ip": "10.10.5.31",
@@ -919,16 +948,16 @@
     "model": "Canon iR-ADV 525 III 45.44",
     "serial": "2WU06855",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:05.1026774Z",
-    "total_pages": 509431,
-    "last_total_pages": 509431,
+    "timestamp": "2026-05-07T16:52:00.0275797Z",
+    "total_pages": 517900,
+    "last_total_pages": 517900,
     "offline_attempts": 0,
     "toner_cartridges": {
-      "Canon Toner T03 Black": "93%"
+      "Canon Toner T03 Black": "74%"
     },
     "drum_units": {},
     "other": {
-      "Fuser Unit": "70%",
+      "Fuser Unit": "66%",
       "Transfer Roller Unit": "0%",
       "ADF Maintenance Kit": "0%",
       "Tray 1 PaperFeeding Roller Unit": "0%",
@@ -936,32 +965,35 @@
       "Tray 3 PaperFeeding Roller Unit": "90%"
     },
     "pages_history": {
-      "2026-04": 1762
+      "2026-04": 7317,
+      "2026-05": 2914
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.82.91": {
     "ip": "10.11.82.91",
-    "name": "B2-Production office",
+    "name": "B2-No being used",
     "community": "public",
     "location": "3",
     "user_overridden": false,
     "model": "HP LaserJet Pro MFP M428fdw",
     "serial": "MXBPMBG23G",
-    "status": "Ok",
-    "timestamp": "2026-04-15T13:20:06.304089Z",
-    "total_pages": 218138,
-    "last_total_pages": 218138,
-    "offline_attempts": 0,
+    "status": "Offline",
+    "timestamp": "2026-05-07T16:52:02.0693596Z",
+    "total_pages": 222116,
+    "last_total_pages": 222116,
+    "offline_attempts": 5,
     "toner_cartridges": {
-      "Black Cartridge HP CF258X": "66%"
+      "Black Cartridge HP CF258X": "31%"
     },
     "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 1342
+      "2026-04": 5320
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.154": {
     "ip": "10.10.5.154",
@@ -972,19 +1004,21 @@
     "model": "T6204e Thermal Printer",
     "serial": "T6EV3422411043 ",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:05.1675907Z",
-    "total_pages": 388735,
-    "last_total_pages": 388735,
-    "offline_attempts": 0,
+    "timestamp": "2026-05-07T16:52:02.1356922Z",
+    "total_pages": 397337,
+    "last_total_pages": 397337,
+    "offline_attempts": 2,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {
-      "ribbon wax": "43%"
+      "ribbon wax": "65%"
     },
     "pages_history": {
-      "2026-04": 2054
+      "2026-04": 7575,
+      "2026-05": 3081
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.152": {
     "ip": "10.10.5.152",
@@ -995,9 +1029,9 @@
     "model": "T6204e Thermal Printer",
     "serial": "T6EV3422408083 ",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:05.3865238Z",
-    "total_pages": 496350,
-    "last_total_pages": 496350,
+    "timestamp": "2026-05-07T16:52:00.2643086Z",
+    "total_pages": 594391,
+    "last_total_pages": 594391,
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
@@ -1005,9 +1039,11 @@
       "ribbon wax": "Unknown"
     },
     "pages_history": {
-      "2026-04": 30261
+      "2026-04": 103885,
+      "2026-05": 24417
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.58": {
     "ip": "10.10.5.58",
@@ -1018,13 +1054,14 @@
     "model": "Zebra Technologies ZD621",
     "serial": "N/A",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:05.3891348Z",
+    "timestamp": "2026-05-07T16:52:02.190746Z",
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {},
     "pages_history": {},
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.1": {
     "ip": "10.10.5.1",
@@ -1035,19 +1072,21 @@
     "model": "T6204e Thermal Printer",
     "serial": "T6EV3422429151 ",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:05.5150875Z",
-    "total_pages": 772300,
-    "last_total_pages": 772300,
+    "timestamp": "2026-05-07T16:52:00.4739111Z",
+    "total_pages": 785254,
+    "last_total_pages": 785254,
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {
-      "ribbon wax": "47%"
+      "ribbon wax": "52%"
     },
     "pages_history": {
-      "2026-04": 769
+      "2026-04": 11327,
+      "2026-05": 2396
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.57": {
     "ip": "10.10.5.57",
@@ -1058,13 +1097,14 @@
     "model": "Zebra Technologies ZD621",
     "serial": "N/A",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:05.499944Z",
+    "timestamp": "2026-05-07T16:52:02.5403904Z",
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {},
     "pages_history": {},
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.14": {
     "ip": "10.10.5.14",
@@ -1075,19 +1115,21 @@
     "model": "T6204e Thermal Printer",
     "serial": "T6EV3422429142 ",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:05.6046294Z",
-    "total_pages": 219109,
-    "last_total_pages": 219109,
+    "timestamp": "2026-05-07T16:52:00.7786579Z",
+    "total_pages": 228375,
+    "last_total_pages": 228375,
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {
-      "ribbon wax": "35%"
+      "ribbon wax": "62%"
     },
     "pages_history": {
-      "2026-04": 1346
+      "2026-04": 7303,
+      "2026-05": 3309
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.56": {
     "ip": "10.10.5.56",
@@ -1098,13 +1140,14 @@
     "model": "Zebra Technologies ZD621",
     "serial": "N/A",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:05.7224926Z",
+    "timestamp": "2026-05-07T16:52:02.6242387Z",
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {},
     "pages_history": {},
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.24": {
     "ip": "10.10.5.24",
@@ -1115,19 +1158,21 @@
     "model": "T6204e Thermal Printer",
     "serial": "T6E422003404",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:05.7438001Z",
-    "total_pages": 4624151,
-    "last_total_pages": 4624151,
+    "timestamp": "2026-05-07T16:52:00.9851776Z",
+    "total_pages": 4654749,
+    "last_total_pages": 4654749,
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {
-      "ribbon wax": "64%"
+      "ribbon wax": "4%"
     },
     "pages_history": {
-      "2026-04": 8232
+      "2026-04": 35069,
+      "2026-05": 3761
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.80.121": {
     "ip": "10.10.80.121",
@@ -1138,19 +1183,21 @@
     "model": "HP LaserJet Pro MFP 4101fdw",
     "serial": "CNCRR5G0DT",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:05.9411565Z",
-    "total_pages": 11551,
-    "last_total_pages": 11551,
+    "timestamp": "2026-05-07T16:52:01.2145701Z",
+    "total_pages": 12390,
+    "last_total_pages": 12390,
     "offline_attempts": 0,
     "toner_cartridges": {
-      "Black Cartridge HP W1480X": "74%"
+      "Black Cartridge HP W1480X": "67%"
     },
     "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 15
+      "2026-04": 797,
+      "2026-05": 57
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.55": {
     "ip": "10.10.5.55",
@@ -1161,13 +1208,14 @@
     "model": "Zebra Technologies ZD621",
     "serial": "N/A",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:05.8903208Z",
+    "timestamp": "2026-05-07T16:52:03.0582955Z",
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {},
     "pages_history": {},
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.28": {
     "ip": "10.10.5.28",
@@ -1178,13 +1226,13 @@
     "model": "Canon iR-ADV C5550 63.17",
     "serial": "WXD07475",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:05.9598414Z",
-    "total_pages": 455727,
-    "last_total_pages": 455727,
+    "timestamp": "2026-05-07T16:52:01.3094845Z",
+    "total_pages": 457903,
+    "last_total_pages": 457903,
     "offline_attempts": 0,
     "toner_cartridges": {
       "Canon GPR-55 Black Toner": "100%",
-      "Canon GPR-55 Cyan Toner": "67%",
+      "Canon GPR-55 Cyan Toner": "65%",
       "Canon GPR-55 Magenta Toner": "100%",
       "Canon GPR-55 Yellow Toner": "100%",
       "Waste Toner": "Unknown"
@@ -1197,9 +1245,11 @@
     },
     "other": {},
     "pages_history": {
-      "2026-04": 277
+      "2026-04": 1845,
+      "2026-05": 608
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.44": {
     "ip": "10.10.5.44",
@@ -1209,20 +1259,22 @@
     "user_overridden": false,
     "model": "T6204e Thermal Printer",
     "serial": "T6E422003387",
-    "status": "Ok",
-    "timestamp": "2026-04-15T13:20:05.9510633Z",
-    "total_pages": 5748341,
-    "last_total_pages": 5748341,
-    "offline_attempts": 0,
+    "status": "Offline",
+    "timestamp": "2026-05-07T16:52:03.35331Z",
+    "total_pages": 5750353,
+    "last_total_pages": 5750353,
+    "offline_attempts": 3,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {
-      "ribbon wax": "65%"
+      "ribbon wax": "34%"
     },
     "pages_history": {
-      "2026-04": 314
+      "2026-04": 2326,
+      "2026-05": 0
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.30": {
     "ip": "10.10.5.30",
@@ -1233,9 +1285,9 @@
     "model": "Canon iR-ADV C5550 69.08",
     "serial": "XLG05416",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:05.9872113Z",
-    "total_pages": 310508,
-    "last_total_pages": 310508,
+    "timestamp": "2026-05-07T16:52:01.5921402Z",
+    "total_pages": 313294,
+    "last_total_pages": 313294,
     "offline_attempts": 0,
     "toner_cartridges": {
       "Canon GPR-55 Black Toner": "100%",
@@ -1252,9 +1304,11 @@
     },
     "other": {},
     "pages_history": {
-      "2026-04": 585
+      "2026-04": 2549,
+      "2026-05": 822
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.160": {
     "ip": "10.10.5.160",
@@ -1265,19 +1319,21 @@
     "model": "T6204e Thermal Printer",
     "serial": "T6EV3422429072 ",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:05.989622Z",
-    "total_pages": 85640,
-    "last_total_pages": 85640,
+    "timestamp": "2026-05-07T16:52:01.6632982Z",
+    "total_pages": 91733,
+    "last_total_pages": 91733,
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {
-      "ribbon wax": "65%"
+      "ribbon wax": "31%"
     },
     "pages_history": {
-      "2026-04": 7592
+      "2026-04": 12430,
+      "2026-05": 1255
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.27": {
     "ip": "10.10.5.27",
@@ -1288,9 +1344,9 @@
     "model": "Canon iR-ADV C5550 25.13",
     "serial": "XUG03108",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:06.0122269Z",
-    "total_pages": 184096,
-    "last_total_pages": 184096,
+    "timestamp": "2026-05-07T16:52:01.8400171Z",
+    "total_pages": 186135,
+    "last_total_pages": 186135,
     "offline_attempts": 0,
     "toner_cartridges": {
       "Canon GPR-55 Black Toner": "100%",
@@ -1307,9 +1363,11 @@
     },
     "other": {},
     "pages_history": {
-      "2026-04": 233
+      "2026-04": 1533,
+      "2026-05": 739
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.81.225": {
     "ip": "10.11.81.225",
@@ -1320,13 +1378,14 @@
     "model": "Brother ADS-4900W",
     "serial": "U66636F4X113232",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:07.8144607Z",
+    "timestamp": "2026-05-07T16:52:04.0398149Z",
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {},
     "pages_history": {},
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.80.113": {
     "ip": "10.10.80.113",
@@ -1337,19 +1396,21 @@
     "model": "HP LaserJet Pro MFP 4101fdw",
     "serial": "CNCRR59BWN",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:08.0111074Z",
-    "total_pages": 51622,
-    "last_total_pages": 51622,
-    "offline_attempts": 1,
+    "timestamp": "2026-05-07T16:52:01.9951197Z",
+    "total_pages": 53652,
+    "last_total_pages": 53652,
+    "offline_attempts": 0,
     "toner_cartridges": {
-      "Black Cartridge HP W1480X": "86%"
+      "Black Cartridge HP W1480X": "71%"
     },
     "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 271
+      "2026-04": 1705,
+      "2026-05": 596
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.7": {
     "ip": "10.10.5.7",
@@ -1359,14 +1420,15 @@
     "user_overridden": false,
     "model": "Zebra Technologies ZD620",
     "serial": "N/A",
-    "status": "Ok",
-    "timestamp": "2026-04-15T13:20:06.0555589Z",
-    "offline_attempts": 0,
+    "status": "Offline",
+    "timestamp": "2026-05-07T16:52:03.9181792Z",
+    "offline_attempts": 5,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {},
     "pages_history": {},
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.12": {
     "ip": "10.10.5.12",
@@ -1377,19 +1439,21 @@
     "model": "T6204e Thermal Printer",
     "serial": "T6EV3422429150 ",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:06.0892788Z",
-    "total_pages": 576185,
-    "last_total_pages": 576185,
+    "timestamp": "2026-05-07T16:52:02.2117041Z",
+    "total_pages": 590220,
+    "last_total_pages": 590220,
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {
-      "ribbon wax": "24%"
+      "ribbon wax": "6%"
     },
     "pages_history": {
-      "2026-04": 5627
+      "2026-04": 18673,
+      "2026-05": 989
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.159": {
     "ip": "10.10.5.159",
@@ -1400,45 +1464,49 @@
     "model": "SATO S84NX TT 203dpi STD",
     "serial": "GB106099",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:06.1772109Z",
-    "total_pages": 244094,
-    "last_total_pages": 244094,
-    "offline_attempts": 0,
+    "timestamp": "2026-05-07T16:52:04.2867031Z",
+    "total_pages": 255167,
+    "last_total_pages": 255167,
+    "offline_attempts": 2,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {
       "Ribbon": "100%"
     },
     "pages_history": {
-      "2026-04": 1741
+      "2026-04": 10520,
+      "2026-05": 2294
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.81.135": {
     "ip": "10.11.81.135",
-    "name": "B2-Ops Office",
+    "name": "B2-Production",
     "community": "public",
     "location": "3",
     "user_overridden": false,
     "model": "Canon MF650C Series",
     "serial": "YKV48074",
     "status": "Error",
-    "timestamp": "2026-04-15T13:20:07.5364655Z",
-    "total_pages": 14388,
-    "last_total_pages": 14388,
+    "timestamp": "2026-05-07T16:52:02.9634738Z",
+    "total_pages": 16772,
+    "last_total_pages": 16772,
     "offline_attempts": 0,
     "toner_cartridges": {
-      "Canon Cartridge 067 Black Toner": "16%",
-      "Canon Cartridge 067 Cyan Toner": "1%",
+      "Canon Cartridge 067 Black Toner": "37%",
+      "Canon Cartridge 067 Cyan Toner": "0%",
       "Canon Cartridge 067 Magenta Toner": "0%",
       "Canon Cartridge 067 Yellow Toner": "0%"
     },
     "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 68
+      "2026-04": 758,
+      "2026-05": 1694
     },
-    "has_open_ticket": true
+    "has_open_ticket": true,
+    "paper_trays": 0
   },
   "10.11.82.200": {
     "ip": "10.11.82.200",
@@ -1449,19 +1517,21 @@
     "model": "SATO S84NX TT 203dpi STD",
     "serial": "HA103241",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:08.2946662Z",
-    "total_pages": 132719,
-    "last_total_pages": 132719,
-    "offline_attempts": 1,
+    "timestamp": "2026-05-07T16:52:02.4864435Z",
+    "total_pages": 137146,
+    "last_total_pages": 137146,
+    "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {
       "Ribbon": "100%"
     },
     "pages_history": {
-      "2026-04": 341
+      "2026-04": 3500,
+      "2026-05": 1268
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.11.83.81": {
     "ip": "10.11.83.81",
@@ -1472,12 +1542,12 @@
     "model": "Canon MF650C Series",
     "serial": "YKQ19260",
     "status": "Error",
-    "timestamp": "2026-04-15T13:20:07.1839327Z",
-    "total_pages": 63685,
-    "last_total_pages": 63685,
+    "timestamp": "2026-05-07T16:52:03.8808829Z",
+    "total_pages": 66006,
+    "last_total_pages": 66006,
     "offline_attempts": 0,
     "toner_cartridges": {
-      "Canon Cartridge 067 Black Toner": "80%",
+      "Canon Cartridge 067 Black Toner": "71%",
       "Canon Cartridge 067 Cyan Toner": "0%",
       "Canon Cartridge 067 Magenta Toner": "0%",
       "Canon Cartridge 067 Yellow Toner": "0%"
@@ -1485,9 +1555,11 @@
     "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 396
+      "2026-04": 2146,
+      "2026-05": 571
     },
-    "has_open_ticket": true
+    "has_open_ticket": true,
+    "paper_trays": 0
   },
   "10.11.80.120": {
     "ip": "10.11.80.120",
@@ -1498,19 +1570,21 @@
     "model": "Canon D1600 Series",
     "serial": "2SN31145",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:07.4108282Z",
-    "total_pages": 22312,
-    "last_total_pages": 22312,
+    "timestamp": "2026-05-07T16:52:03.9973184Z",
+    "total_pages": 23858,
+    "last_total_pages": 23858,
     "offline_attempts": 0,
     "toner_cartridges": {
-      "Canon CRG121 Black Toner": "94%"
+      "Canon CRG121 Black Toner": "66%"
     },
     "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 321
+      "2026-04": 1672,
+      "2026-05": 195
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.151": {
     "ip": "10.10.5.151",
@@ -1521,19 +1595,21 @@
     "model": "T6204e Thermal Printer",
     "serial": "T6EV3422429065 ",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:06.6380876Z",
+    "timestamp": "2026-05-07T16:52:02.7673969Z",
     "total_pages": 195104,
     "last_total_pages": 195104,
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {
-      "ribbon wax": "48%"
+      "ribbon wax": "Unknown"
     },
     "pages_history": {
-      "2026-04": 0
+      "2026-04": 0,
+      "2026-05": 0
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.10": {
     "ip": "10.10.5.10",
@@ -1544,7 +1620,7 @@
     "model": "T6204e Thermal Printer",
     "serial": "T6EV3422429056 ",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:06.6544253Z",
+    "timestamp": "2026-05-07T16:52:02.8360385Z",
     "total_pages": 255129,
     "last_total_pages": 255129,
     "offline_attempts": 0,
@@ -1554,9 +1630,11 @@
       "ribbon wax": "Unknown"
     },
     "pages_history": {
-      "2026-04": 0
+      "2026-04": 0,
+      "2026-05": 0
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.6": {
     "ip": "10.10.5.6",
@@ -1567,19 +1645,21 @@
     "model": "T6204e Thermal Printer",
     "serial": "T6EV3422429132 ",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:06.8724501Z",
-    "total_pages": 348904,
-    "last_total_pages": 348904,
+    "timestamp": "2026-05-07T16:52:03.0011941Z",
+    "total_pages": 355251,
+    "last_total_pages": 355251,
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {
-      "ribbon wax": "65%"
+      "ribbon wax": "46%"
     },
     "pages_history": {
-      "2026-04": 5
+      "2026-04": 3186,
+      "2026-05": 3166
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.3": {
     "ip": "10.10.5.3",
@@ -1590,19 +1670,21 @@
     "model": "T6204e Thermal Printer",
     "serial": "T6EV3422408055 ",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:06.9176841Z",
-    "total_pages": 272464,
-    "last_total_pages": 272464,
+    "timestamp": "2026-05-07T16:52:03.0506369Z",
+    "total_pages": 287731,
+    "last_total_pages": 287731,
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {
-      "ribbon wax": "33%"
+      "ribbon wax": "49%"
     },
     "pages_history": {
-      "2026-04": 6715
+      "2026-04": 17029,
+      "2026-05": 4953
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.80.82": {
     "ip": "10.10.80.82",
@@ -1613,19 +1695,21 @@
     "model": "HP LaserJet Pro MFP 4101fdw",
     "serial": "CNCRR5D397",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:07.1333764Z",
-    "total_pages": 1255,
-    "last_total_pages": 1255,
+    "timestamp": "2026-05-07T16:52:03.2701785Z",
+    "total_pages": 1472,
+    "last_total_pages": 1472,
     "offline_attempts": 0,
     "toner_cartridges": {
-      "Black Cartridge HP W1480X": "100%"
+      "Black Cartridge HP W1480X": "97%"
     },
     "drum_units": {},
     "other": {},
     "pages_history": {
-      "2026-04": 0
+      "2026-04": 178,
+      "2026-05": 39
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.157": {
     "ip": "10.10.5.157",
@@ -1636,9 +1720,9 @@
     "model": "T6204e Thermal Printer",
     "serial": "T6EV3422411037 ",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:07.0905606Z",
-    "total_pages": 143441,
-    "last_total_pages": 143441,
+    "timestamp": "2026-05-07T16:52:03.209609Z",
+    "total_pages": 145206,
+    "last_total_pages": 145206,
     "offline_attempts": 0,
     "toner_cartridges": {},
     "drum_units": {},
@@ -1646,9 +1730,11 @@
       "ribbon wax": "Unknown"
     },
     "pages_history": {
-      "2026-04": 0
+      "2026-04": 898,
+      "2026-05": 867
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
   },
   "10.10.5.13": {
     "ip": "10.10.5.13",
@@ -1659,18 +1745,45 @@
     "model": "T6204e Thermal Printer",
     "serial": "T6EV3422408059 ",
     "status": "Ok",
-    "timestamp": "2026-04-15T13:20:07.188703Z",
-    "total_pages": 60784,
-    "last_total_pages": 60784,
-    "offline_attempts": 0,
+    "timestamp": "2026-05-07T16:52:05.25297Z",
+    "total_pages": 80875,
+    "last_total_pages": 80875,
+    "offline_attempts": 2,
     "toner_cartridges": {},
     "drum_units": {},
     "other": {
-      "ribbon wax": "31%"
+      "ribbon wax": "Unknown"
     },
     "pages_history": {
-      "2026-04": 3286
+      "2026-04": 18779,
+      "2026-05": 4598
     },
-    "has_open_ticket": false
+    "has_open_ticket": false,
+    "paper_trays": 0
+  },
+  "10.10.10.85": {
+    "ip": "10.10.10.85",
+    "name": "SHOP",
+    "community": "public",
+    "location": "1",
+    "user_overridden": false,
+    "model": "HP LaserJet Pro MFP 4101fdw",
+    "serial": "CNCRR58BGV",
+    "status": "Ok",
+    "timestamp": "2026-05-07T16:52:03.3399076Z",
+    "total_pages": 12056,
+    "last_total_pages": 12056,
+    "offline_attempts": 0,
+    "toner_cartridges": {
+      "Black Cartridge HP W1480X": "70%"
+    },
+    "drum_units": {},
+    "other": {},
+    "pages_history": {
+      "2026-04": 650,
+      "2026-05": 670
+    },
+    "has_open_ticket": false,
+    "paper_trays": 0
   }
 }

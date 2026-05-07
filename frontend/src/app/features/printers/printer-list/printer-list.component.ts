@@ -19,12 +19,21 @@ import { LocationService } from '../../../core/services/location.service';
           <h1 class="text-2xl font-bold text-gray-900">Printers</h1>
           <p class="text-sm text-gray-500 mt-0.5">{{ printers().length }} total</p>
         </div>
-        <a routerLink="/printers/add" class="btn-primary">
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-          </svg>
-          Add Printer
-        </a>
+        <div class="flex items-center gap-2">
+          <button (click)="exportByModel()" class="btn-secondary flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+            </svg>
+            Export by Model
+          </button>
+          <a routerLink="/printers/add" class="btn-primary">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            Add Printer
+          </a>
+        </div>
       </div>
 
       <!-- Search -->
@@ -236,6 +245,36 @@ export class PrinterListComponent implements OnInit {
       this.sortBy.set(field as any);
       this.sortDir.set('asc');
     }
+  }
+
+  exportByModel() {
+    const rows = this.filtered();
+    const lines = ['Name,Model,Location,IP Address,Serial Number,Total Pages,Paper Trays'];
+    for (const p of rows) {
+      lines.push([
+        this.csv(p.name),
+        this.csv(p.model),
+        this.csv(this.locationSvc.getName(p.location)),
+        this.csv(p.ip_address),
+        this.csv(p.serial_number),
+        p.total_pages_printed ?? '0',
+        p.paper_tray_count ?? 0,
+      ].join(','));
+    }
+
+    const blob = new Blob([lines.join('\n')], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `printers_by_model_${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
+  private csv(value: string): string {
+    return `"${(value ?? '').replace(/"/g, '""')}"`;
   }
 
   ngOnInit() {

@@ -14,6 +14,7 @@ export interface Printer {
   total_pages_printed: string | null;
   offline_attempts: number;
   has_open_ticket: boolean;
+  paper_tray_count: number;
   toner_cartridges: Record<string, string>;
   drum_units: Record<string, string>;
   other_supplies: Record<string, string>;
@@ -86,10 +87,12 @@ export interface AddPrinterRequest {
   ip_address: string;
   community?: string;
   location?: string;
+  paper_tray_count?: number;
 }
 
 export interface UpdatePrinterRequest {
   name?: string;
   community?: string;
   location?: string;
+  paper_tray_count?: number;
 }

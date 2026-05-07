@@ -1,14 +1,36 @@
 using System.Text;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using TonerTrack.Application.NinjaRmm;
 using TonerTrack.Application.Printers.Queries;
 
 namespace TonerTrack.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public sealed class ReportsController(IMediator mediator) : ControllerBase
+public sealed class ReportsController(IMediator mediator, IOptions<LocationOptions> locationOpts) : ControllerBase
 {
+    // GET /api/reports/printers-by-model.csv
+    [HttpGet("printers-by-model.csv")]
+    [Produces("text/csv")]
+    public async Task<IActionResult> PrintersByModelCsv(CancellationToken ct)
+    {
+        var printers = await mediator.Send(new GetAllPrintersQuery(), ct);
+        var sb = new StringBuilder("Name,Model,Location,IP Address,Serial Number,Total Pages,Paper Trays\n");
+
+        foreach (var p in printers.OrderBy(p => p.Model).ThenBy(p => p.Name))
+        {
+            sb.Append($"{Csv(p.Name)},{Csv(p.Model)},{Csv(locationOpts.Value.GetName(p.Location))},");
+            sb.Append($"{Csv(p.IpAddress)},{Csv(p.SerialNumber)},{p.TotalPagesPrinted ?? "0"},{p.PaperTrayCount}\n");
+        }
+
+        return File(
+            Encoding.UTF8.GetBytes(sb.ToString()),
+            "text/csv",
+            $"printers_by_model_{DateTime.UtcNow:yyyyMMdd}.csv");
+    }
+
     // GET /api/reports/monthly.csv
     [HttpGet("monthly.csv")]
     [Produces("text/csv")]
@@ -49,4 +71,6 @@ public sealed class ReportsController(IMediator mediator) : ControllerBase
             "text/csv",
             $"usage_{ip.Replace('.', '_')}.csv");
     }
+
+    private static string Csv(string value) => $"\"{value.Replace("\"", "\"\"")}\"";
 }

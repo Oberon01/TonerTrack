@@ -35,6 +35,9 @@ public sealed class Printer
     private readonly List<PrinterAlert> _alerts = [];
     public IReadOnlyList<PrinterAlert> Alerts => _alerts.AsReadOnly();
 
+    // Physical paper input tray count (manually set, not SNMP polled)
+    public int PaperTrayCount { get; private set; }
+
     // For offline tracking
     public int OfflineAttempts { get; private set; }
     private const int OfflineThreshold = 3;
@@ -86,6 +89,12 @@ public sealed class Printer
 
     public void SetLocation(string location) =>
         Location = location ?? string.Empty;
+
+    public void SetPaperTrayCount(int count)
+    {
+        if (count < 0) throw new PrinterDomainException("Paper tray count cannot be negative.");
+        PaperTrayCount = count;
+    }
 
     public void ClearUserOverride() => UserOverridden = false;
 
@@ -188,7 +197,8 @@ public sealed class Printer
         int offlineAttempts,
         bool hasOpenTicket,
         IReadOnlyList<Supply> supplies,
-        Dictionary<string, long> pagesHistory)
+        Dictionary<string, long> pagesHistory,
+        int paperTrayCount = 0)
     {
         Location = location;
         UserOverridden = userOverridden;
@@ -200,6 +210,7 @@ public sealed class Printer
         LastTotalPages = lastTotalPages;
         OfflineAttempts = offlineAttempts;
         HasOpenTicket = hasOpenTicket;
+        PaperTrayCount = paperTrayCount;
         _supplies.Clear();
         _supplies.AddRange(supplies);
         _pagesHistory.Clear();

@@ -39,14 +39,15 @@ public sealed class TonerLowTicketHandler(
         var locationDisplay = locOpts.GetName(evt.Location);
         var prefix = string.IsNullOrEmpty(locationDisplay) ? "" : $"[{locationDisplay}]";
 
-        var subject = $"Low Toner Alert – ({prefix}) {evt.PrinterName}";
-        var body = $"{evt.PrinterName} ({evt.IpAddress}) has low toner:\n{lowList}";
+        var subject = $"Low Toner Alert – {prefix} {evt.PrinterName}";
+        var locationLine = string.IsNullOrEmpty(locationDisplay) ? "" : $"Location: {locationDisplay}\n";
+        var body = $"{evt.PrinterName} ({evt.IpAddress})\n{locationLine}\nLow toner detected:\n{lowList}";
         var locationId = int.TryParse(evt.Location, out var locId) ? locId : o.LocationId;
 
         try
         {
             var ticketRef = await logger_ninja.CreateTonerTicketAsync(
-                o.ClientId, o.TicketFormId, o.LocationId,
+                o.ClientId, o.TicketFormId, locationId,
                 subject, body, ct);
 
             logger.LogInformation(
@@ -60,6 +61,7 @@ public sealed class TonerLowTicketHandler(
                 evt.PrinterName, evt.IpAddress, ex.Message);
         }
     }
+}
 
 // Options class for configuring ticket defaults when auto-creating tickets from domain events.
 
